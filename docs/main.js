@@ -299,6 +299,14 @@
       });
     });
 
+    // Preload policy images after page load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.policy-panel:not(.active) img[loading="lazy"]').forEach(img => {
+        img.loading = 'eager';
+        img.src = img.src;
+      });
+    });
+
     // ─── FAQ ACCORDION ───
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
