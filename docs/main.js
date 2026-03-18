@@ -289,13 +289,30 @@
     })();
 
     // ─── POLICY TABS ───
-    document.querySelectorAll('.policy-tab').forEach(tab => {
+    const policyTabs = Array.from(document.querySelectorAll('.policy-tab'));
+    const policyPanels = document.querySelectorAll('.policy-panel');
+
+    function activatePolicy(idx) {
+      policyTabs.forEach(t => t.classList.remove('active'));
+      policyPanels.forEach(p => p.classList.remove('active'));
+      policyTabs[idx].classList.add('active');
+      const policy = policyTabs[idx].dataset.policy;
+      document.querySelector(`.policy-panel[data-policy="${policy}"]`)?.classList.add('active');
+    }
+
+    // Auto-rotate every 3s
+    let policyIdx = 0;
+    let policyAutoInterval = setInterval(() => {
+      policyIdx = (policyIdx + 1) % policyTabs.length;
+      activatePolicy(policyIdx);
+    }, 3000);
+
+    // Stop auto-rotate on user click
+    policyTabs.forEach((tab, idx) => {
       tab.addEventListener('click', () => {
-        const policy = tab.dataset.policy;
-        document.querySelectorAll('.policy-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.policy-panel').forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        document.querySelector(`.policy-panel[data-policy="${policy}"]`)?.classList.add('active');
+        clearInterval(policyAutoInterval);
+        policyIdx = idx;
+        activatePolicy(idx);
       });
     });
 
