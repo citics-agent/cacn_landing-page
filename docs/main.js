@@ -50,19 +50,6 @@
       }
     }
 
-    // ─── USP ACCORDION (mobile) ───
-    const uspGrid = document.querySelector('.usp-grid');
-    if (uspGrid) {
-      uspGrid.addEventListener('click', (e) => {
-        if (!window.matchMedia('(max-width: 768px)').matches) return;
-        const card = e.target.closest('.usp-card');
-        if (!card) return;
-        const isOpen = card.classList.contains('usp-open');
-        uspGrid.querySelectorAll('.usp-card').forEach(c => c.classList.remove('usp-open'));
-        if (!isOpen) card.classList.add('usp-open');
-      });
-    }
-
     // ─── SCROLL REVEAL (IntersectionObserver) ───
     const revealElements = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
@@ -427,10 +414,31 @@
     }
 
     const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+    const lcDetailPanel = document.querySelector('.lc-detail-panel');
+    const lcConnectorArrow = document.getElementById('lc-arrow');
 
     lcSteps.forEach((step, idx) => {
       step.addEventListener('mouseenter', () => { if (!isMobile()) setLcStage(idx); });
-      step.addEventListener('click', () => { if (isMobile()) setLcStage(idx); });
+      step.addEventListener('click', () => {
+        if (!isMobile()) return;
+        const wasActive = step.classList.contains('active');
+        setLcStage(idx);
+        if (lcDetailPanel) {
+          if (wasActive && lcDetailPanel.classList.contains('lc-mobile-open')) {
+            // Collapse if tapping the same active step
+            lcDetailPanel.classList.remove('lc-mobile-open');
+            step.classList.remove('active');
+          } else {
+            // Move detail panel right after the clicked step
+            step.after(lcDetailPanel);
+            if (lcConnectorArrow) step.after(lcConnectorArrow);
+            // Small delay to allow DOM move before triggering transition
+            requestAnimationFrame(() => {
+              lcDetailPanel.classList.add('lc-mobile-open');
+            });
+          }
+        }
+      });
     });
 
     setLcStage(0);

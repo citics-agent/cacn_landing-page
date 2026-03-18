@@ -560,6 +560,7 @@
     .nav-cta {
       padding: 10px 24px !important;
       font-size: 13px !important;
+      font-weight: 700 !important;
       background: var(--amber) !important;
       color: var(--blue) !important;
       border-color: var(--amber) !important;
@@ -2614,6 +2615,9 @@
       .lc-step-name {
         font-size: 14px;
         text-align: left;
+        display: flex;
+        align-items: center;
+        flex: 1;
       }
 
       .lc-step-num {
@@ -2626,13 +2630,48 @@
       }
 
       .lc-detail-panel {
-        padding: 28px 24px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        padding: 0 24px;
         min-height: 0;
-        margin-top: 16px;
+        margin-top: 0;
+        border: none;
+        transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease, margin 0.3s ease;
+      }
+
+      .lc-detail-panel.lc-mobile-open {
+        max-height: 500px;
+        opacity: 1;
+        padding: 28px 24px;
+        margin-top: 0;
+        margin-bottom: 8px;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--card-radius);
       }
 
       .lc-detail-panel .lc-d-title {
         font-size: 18px;
+      }
+
+      .lc-step {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .lc-step .lc-step-name::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid var(--gray-500);
+        border-bottom: 2px solid var(--gray-500);
+        transform: rotate(45deg);
+        transition: transform 0.3s ease;
+        margin-left: auto;
+      }
+
+      .lc-step.active .lc-step-name::after {
+        transform: rotate(-135deg);
+        border-color: var(--white);
       }
 
       .coop-action-badges-svg {
@@ -3485,7 +3524,8 @@
     }
 
     .partner-banner-full {
-      width: 100%;
+      width: 150%;
+      margin-left: -25%;
     }
 
     .tiec-banner-img {
@@ -3734,11 +3774,11 @@
 
     .footer-qr-img {
       width: 140px;
-      height: 140px;
+      height: auto;
+      aspect-ratio: 1 / 1;
       border-radius: 0 !important;
       background: #fff;
-      padding: 8px;
-      object-fit: contain;
+      padding: 1px;
     }
 
     .footer-store-badge {
@@ -4011,50 +4051,6 @@
 
       .usp-card {
         padding: 20px 24px;
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      .usp-card h3 {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .usp-card h3::after {
-        content: '';
-        width: 10px;
-        height: 10px;
-        border-right: 2px solid var(--gray-600);
-        border-bottom: 2px solid var(--gray-600);
-        transform: rotate(45deg);
-        transition: transform 0.3s ease;
-        flex-shrink: 0;
-        margin-left: 12px;
-      }
-
-      .usp-card.usp-open h3::after {
-        transform: rotate(-135deg);
-      }
-
-      .usp-card p {
-        max-height: 0 !important;
-        overflow: hidden !important;
-        opacity: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
-      }
-
-      .usp-card.usp-open p {
-        max-height: 200px !important;
-        opacity: 1 !important;
-        margin-top: 12px !important;
-      }
-
-      .usp-card:hover {
-        transform: none;
-        box-shadow: none;
       }
 
       /* TIEC banner - ensure visible on mobile despite overflow:hidden parent */
