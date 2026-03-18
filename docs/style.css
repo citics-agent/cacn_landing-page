@@ -694,7 +694,10 @@
       padding: 12px 28px;
       font-size: 14px;
       flex: 1;
+      display: flex;
+      align-items: center;
       justify-content: center;
+      text-align: center;
       max-width: 200px;
     }
 
@@ -3981,12 +3984,25 @@
       }
 
       .policy-tabs {
-        justify-content: flex-start;
+        justify-content: flex-start !important;
         padding: 0 var(--safe-zone);
       }
 
       .policy-panels {
         max-width: 100%;
+        display: block;
+      }
+
+      .policy-panel {
+        display: none;
+      }
+
+      .policy-panel.active {
+        display: block;
+      }
+
+      .policy-panels::after {
+        display: none;
       }
 
       .section {
@@ -4053,7 +4069,20 @@
         padding: 20px 24px;
       }
 
-      /* TIEC banner - ensure visible on mobile despite overflow:hidden parent */
+      /* TIEC banner - reset to 100% on mobile, ensure visible */
+      .partner-training {
+        padding: 40px 0 20px;
+      }
+
+      .partner-training + .cta-compact {
+        padding-top: 20px;
+      }
+
+      .partner-banner-full {
+        width: 100%;
+        margin-left: 0;
+      }
+
       .partner-training .reveal {
         opacity: 1;
         transform: none;

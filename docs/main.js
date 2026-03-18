@@ -300,17 +300,42 @@
       document.querySelector(`.policy-panel[data-policy="${policy}"]`)?.classList.add('active');
     }
 
-    // Auto-rotate every 3s
+    // Auto-rotate every 3s, only while policy section is in view
     let policyIdx = 0;
-    let policyAutoInterval = setInterval(() => {
-      policyIdx = (policyIdx + 1) % policyTabs.length;
-      activatePolicy(policyIdx);
-    }, 3000);
+    let policyAutoInterval = null;
+    const policiesSection = document.getElementById('policies');
 
-    // Stop auto-rotate on user click
+    function startPolicyRotation() {
+      if (policyAutoInterval) return;
+      policyAutoInterval = setInterval(() => {
+        policyIdx = (policyIdx + 1) % policyTabs.length;
+        activatePolicy(policyIdx);
+      }, 3000);
+    }
+
+    function stopPolicyRotation() {
+      clearInterval(policyAutoInterval);
+      policyAutoInterval = null;
+    }
+
+    // Only rotate when policy section is visible and user hasn't clicked
+    if (policiesSection) {
+      const policyVisObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (policyUserClicked) return;
+          if (entry.isIntersecting) startPolicyRotation();
+          else stopPolicyRotation();
+        });
+      }, { threshold: 0.1 });
+      policyVisObserver.observe(policiesSection);
+    }
+
+    // Stop auto-rotate permanently on user click
+    let policyUserClicked = false;
     policyTabs.forEach((tab, idx) => {
       tab.addEventListener('click', () => {
-        clearInterval(policyAutoInterval);
+        policyUserClicked = true;
+        stopPolicyRotation();
         policyIdx = idx;
         activatePolicy(idx);
       });
