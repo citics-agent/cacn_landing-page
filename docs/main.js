@@ -51,15 +51,14 @@
     }
 
     // ─── USP ACCORDION (mobile) ───
-    if (window.innerWidth <= 768) {
-      document.querySelectorAll('.usp-card').forEach(card => {
-        card.addEventListener('click', () => {
-          const isOpen = card.classList.contains('usp-open');
-          document.querySelectorAll('.usp-card').forEach(c => c.classList.remove('usp-open'));
-          if (!isOpen) card.classList.add('usp-open');
-        });
+    document.querySelectorAll('.usp-card').forEach(card => {
+      card.addEventListener('click', () => {
+        if (!window.matchMedia('(max-width: 768px)').matches) return;
+        const isOpen = card.classList.contains('usp-open');
+        document.querySelectorAll('.usp-card').forEach(c => c.classList.remove('usp-open'));
+        if (!isOpen) card.classList.add('usp-open');
       });
-    }
+    });
 
     // ─── SCROLL REVEAL (IntersectionObserver) ───
     const revealElements = document.querySelectorAll('.reveal');
@@ -301,15 +300,7 @@
 
     // ─── POLICY TABS ───
     const policyTabs = Array.from(document.querySelectorAll('.policy-tab'));
-    const policyPanelsEl = document.querySelector('.policy-panels');
     const policyPanelsList = document.querySelectorAll('.policy-panel');
-
-    function setPolicyHeight() {
-      const active = policyPanelsEl?.querySelector('.policy-panel.active');
-      if (active && policyPanelsEl) {
-        policyPanelsEl.style.height = active.scrollHeight + 'px';
-      }
-    }
 
     function activatePolicy(idx) {
       policyTabs.forEach(t => t.classList.remove('active'));
@@ -317,16 +308,6 @@
       policyTabs[idx].classList.add('active');
       const policy = policyTabs[idx].dataset.policy;
       document.querySelector(`.policy-panel[data-policy="${policy}"]`)?.classList.add('active');
-      setPolicyHeight();
-    }
-
-    // Set initial height & update on resize/image load
-    setPolicyHeight();
-    window.addEventListener('resize', setPolicyHeight);
-    if (policyPanelsEl) {
-      policyPanelsEl.querySelectorAll('img').forEach(img => {
-        img.addEventListener('load', setPolicyHeight);
-      });
     }
 
     // Auto-rotate every 3s

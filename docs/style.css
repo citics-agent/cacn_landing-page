@@ -2926,30 +2926,27 @@
 
     .policy-panels {
       margin-top: 32px;
-      position: relative;
-      overflow: hidden;
+      display: grid;
       max-width: 80%;
       margin-left: auto;
       margin-right: auto;
-      transition: height 0.4s ease;
     }
 
     .policy-panel {
-      position: absolute;
-      top: 0;
-      left: 0;
+      grid-area: 1 / 1;
       width: 100%;
       overflow: hidden;
       border-radius: var(--card-radius);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s ease;
+      visibility: hidden;
     }
 
     .policy-panel.active {
-      position: relative;
       opacity: 1;
       pointer-events: auto;
+      visibility: visible;
     }
 
     @keyframes policyFadeIn {
@@ -3958,10 +3955,23 @@
         grid-template-columns: 1fr;
         gap: 24px;
         text-align: center;
+        align-items: center;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .hero-eyebrow {
         justify-content: center;
+        text-align: center;
+      }
+
+      .hero h1 {
+        text-align: center;
+        width: 100%;
       }
 
       .hero-sub {
@@ -4009,6 +4019,12 @@
         max-height: 200px;
         opacity: 1;
         margin-top: 12px;
+      }
+
+      /* TIEC banner - ensure visible on mobile despite overflow:hidden parent */
+      .partner-training .reveal {
+        opacity: 1;
+        transform: none;
       }
 
       /* Pain Point Hub - mobile */
