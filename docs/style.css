@@ -1216,7 +1216,7 @@
     }
 
     .eform-header p {
-      font-size: 16px;
+      font-size: 17px;
       color: rgba(255, 255, 255, 0.8);
       line-height: 1.7;
       max-width: 600px;
@@ -2247,7 +2247,7 @@
     }
 
     .coop-section-title {
-      font-size: clamp(20px, 3vw, 26px);
+      font-size: clamp(28px, 4vw, 42px);
       font-weight: 800;
       margin-bottom: 8px;
       color: var(--black);
@@ -2551,7 +2551,7 @@
     }
 
     .coop-note {
-      font-size: 13px;
+      font-size: 17px;
       color: var(--gray-600);
       line-height: 1.7;
       margin-top: 32px;
