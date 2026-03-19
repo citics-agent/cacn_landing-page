@@ -119,7 +119,7 @@
           const duration = 2000;
           const start = performance.now();
           const isDecimal = target % 1 !== 0;
-          const suffix = target >= 1000 ? '+' : '';
+          const suffix = target >= 1000 ? '+' : (el.dataset.suffix || '');
 
           function update(now) {
             const elapsed = now - start;
@@ -130,11 +130,9 @@
             if (target >= 1000) {
               el.textContent = Math.floor(current).toLocaleString('en-US') + suffix;
             } else if (isDecimal) {
-              el.textContent = current.toFixed(1) + ' triệu';
-            } else if (target === 32) {
-              el.textContent = Math.floor(current) + ' triệu';
+              el.textContent = current.toFixed(1) + suffix;
             } else {
-              el.textContent = Math.floor(current);
+              el.textContent = Math.floor(current) + suffix;
             }
 
             if (progress < 1) requestAnimationFrame(update);
