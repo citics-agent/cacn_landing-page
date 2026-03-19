@@ -280,9 +280,66 @@
       }
       // Pause on hover
       carousel.addEventListener('mouseenter', () => cancelAnimationFrame(rafId));
-      carousel.addEventListener('mouseleave', () => { rafId = requestAnimationFrame(step); });
+      carousel.addEventListener('mouseleave', () => {
+        if (!isDragging) rafId = requestAnimationFrame(step);
+      });
+
+      // Drag to scroll
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragStartScroll = 0;
+
+      carousel.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        dragStartX = e.pageX;
+        dragStartScroll = scrollPos;
+        cancelAnimationFrame(rafId);
+        carousel.style.cursor = 'grabbing';
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const dx = dragStartX - e.pageX;
+        scrollPos = dragStartScroll + dx;
+        const half = carousel.scrollWidth / 2;
+        if (scrollPos < 0) scrollPos += half;
+        if (scrollPos >= half) scrollPos -= half;
+        carousel.scrollLeft = scrollPos;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        carousel.style.cursor = 'grab';
+        rafId = requestAnimationFrame(step);
+      });
+
+      // Touch support
+      let touchStartX = 0;
+      let touchStartScroll = 0;
+
+      carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].pageX;
+        touchStartScroll = scrollPos;
+        cancelAnimationFrame(rafId);
+      }, { passive: true });
+
+      carousel.addEventListener('touchmove', (e) => {
+        const dx = touchStartX - e.touches[0].pageX;
+        scrollPos = touchStartScroll + dx;
+        const half = carousel.scrollWidth / 2;
+        if (scrollPos < 0) scrollPos += half;
+        if (scrollPos >= half) scrollPos -= half;
+        carousel.scrollLeft = scrollPos;
+      }, { passive: true });
+
+      carousel.addEventListener('touchend', () => {
+        rafId = requestAnimationFrame(step);
+      });
+
       // Disable scroll-snap for smooth animation
       carousel.style.scrollSnapType = 'none';
+      carousel.style.cursor = 'grab';
       rafId = requestAnimationFrame(step);
     })();
 
@@ -291,11 +348,13 @@
     const policyPanelsList = document.querySelectorAll('.policy-panel');
 
     function activatePolicy(idx) {
+      const savedY = window.scrollY;
       policyTabs.forEach(t => t.classList.remove('active'));
       policyPanelsList.forEach(p => p.classList.remove('active'));
       policyTabs[idx].classList.add('active');
       const policy = policyTabs[idx].dataset.policy;
       document.querySelector(`.policy-panel[data-policy="${policy}"]`)?.classList.add('active');
+      requestAnimationFrame(() => window.scrollTo({ top: savedY, behavior: 'instant' }));
     }
 
     // Auto-rotate every 3s, only while policy section is in view

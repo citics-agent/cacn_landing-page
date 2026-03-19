@@ -2968,14 +2968,16 @@
 
     .policy-panels {
       margin-top: 32px;
-      display: grid;
+      position: relative;
       max-width: 80%;
       margin-left: auto;
       margin-right: auto;
     }
 
     .policy-panel {
-      grid-area: 1 / 1;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       overflow: hidden;
       border-radius: var(--card-radius);
@@ -2983,10 +2985,10 @@
       pointer-events: none;
       transition: opacity 0.4s ease;
       visibility: hidden;
-      align-self: start;
     }
 
     .policy-panel.active {
+      position: relative;
       opacity: 1;
       pointer-events: auto;
       visibility: visible;
@@ -2997,15 +2999,6 @@
       height: auto;
       display: block;
       border-radius: 0;
-    }
-
-    /* Reserve space for tallest policy image (buyer-secondary: 2269.5 x 1875.75)
-       This prevents page content below from jumping when switching tabs */
-    .policy-panels::after {
-      content: '';
-      grid-area: 1 / 1;
-      width: 100%;
-      aspect-ratio: 2269.5 / 1875.75;
     }
 
     /* ========== FAQ ACCORDION ========== */
@@ -4001,9 +3994,6 @@
         display: block;
       }
 
-      .policy-panels::after {
-        display: none;
-      }
 
       .section {
         padding: 60px 0;
