@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Local tooling
+.agent/
+.claude/
+.tmp/
+SKILLS/
+
+# Reference & brand (local only)
+Reference/
+brand-guidelines/
