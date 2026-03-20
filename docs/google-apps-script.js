@@ -84,7 +84,7 @@ function getOrCreateSheet(type) {
   if (!firstCell || firstCell !== "Timestamp") {
     const headers =
       type === "agent"
-        ? ["Timestamp", "Họ và tên", "Số điện thoại", "Thành phố", "Kinh nghiệm", "Loại Agent", "Mã giới thiệu", "Quan tâm khoá học"]
+        ? ["Timestamp", "Họ và tên", "Số điện thoại", "Thành phố", "Nghề nghiệp hiện tại", "Kinh nghiệm", "Loại Agent", "Mã giới thiệu", "Quan tâm khoá học"]
         : ["Timestamp", "Tên Store / Người đại diện", "Số điện thoại", "Thành phố", "Số lượng Agent", "Loại hình hợp tác", "Mã giới thiệu", "Quan tâm khoá học"];
 
     // Insert header row at top (pushes existing data down)
@@ -112,6 +112,7 @@ function buildRow(type, data) {
       data.name || "",
       data.phone || "",
       data.city || "",
+      data.occupation || "",
       data.experience || "",
       data.agentType || "",
       data.referral || "",
@@ -142,6 +143,7 @@ function sendNotificationEmail(type, data) {
     body += `Họ và tên: ${data.name}\n`;
     body += `Số điện thoại: ${data.phone}\n`;
     body += `Thành phố: ${data.city}\n`;
+    body += `Nghề nghiệp hiện tại: ${data.occupation || "Không có"}\n`;
     body += `Kinh nghiệm: ${data.experience}\n`;
     body += `Loại Agent: ${data.agentType}\n`;
     body += `Mã giới thiệu: ${data.referral || "Không có"}\n`;

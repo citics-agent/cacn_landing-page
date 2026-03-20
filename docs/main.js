@@ -625,9 +625,17 @@
         // Collect form data
         const formData = new FormData(formEl);
         const data = { type };
-        formData.forEach((value, key) => { data[key] = value; });
+        formData.forEach((value, key) => {
+          if (key === 'agentType') return; // handled below
+          data[key] = value;
+        });
+        // Multi-select agentType checkboxes
+        const checkedRoles = formEl.querySelectorAll('[name="agentType"]:checked');
+        if (checkedRoles.length) {
+          data.agentType = Array.from(checkedRoles).map(cb => cb.value).join(', ');
+        }
         // Checkbox handling (FormData omits unchecked checkboxes)
-        data.courseInterest = formEl.querySelector('[name="courseInterest"]').checked;
+        data.courseInterest = formEl.querySelector('[name="courseInterest"]')?.checked || false;
 
         try {
           const res = await fetch(GOOGLE_SCRIPT_URL, {

@@ -184,13 +184,12 @@
       <div class="section-label reveal">Mô hình</div>
       <h2 class="section-title reveal">Citics Agent Cooperation Network (C-ACN) là gì?</h2>
       <p class="section-subtitle reveal">CACN là hệ điều hành quản trị và hợp tác thống nhất cho mạng lưới Citics Agent
-        trên toàn quốc.
-
-        CACN kết nối môi giới bất động sản, chuyên viên tài chính, định giá và pháp lý vào một mạng lưới chung với chuẩn
-        vận hành, phân vai rõ ràng và dữ liệu được ghi nhận trên nền tảng Citics Agent.
-
+        trên toàn quốc.<br><br>CACN kết nối môi giới bất động sản, chuyên viên tài chính, định giá và pháp lý vào một
+        mạng
+        lưới chung với chuẩn vận hành, phân vai rõ ràng và dữ liệu được ghi nhận trên nền tảng Citics Agent.<br><br>
         Nhờ đó, CACN bảo vệ quyền lợi các bên, nâng cao hiệu quả phối hợp và tạo nền tảng để Citics mở rộng dịch vụ trên
-        quy mô toàn quốc. </p>
+        quy mô toàn quốc.
+      </p>
 
       <div class="cacn-banner-wrap reveal">
         <picture>
@@ -446,6 +445,16 @@
                 </select>
               </div>
               <div class="form-field">
+                <label>Số điện thoại người giới thiệu</label>
+                <input type="text" name="referral" placeholder="0901 234 567">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="agent-occupation">Nghề nghiệp hiện tại</label>
+                <input type="text" id="agent-occupation" name="occupation" placeholder="Nhập nghề nghiệp hiện tại">
+              </div>
+              <div class="form-field">
                 <label for="experience">Kinh nghiệm</label>
                 <select id="experience" name="experience" aria-label="Kinh nghiệm" required>
                   <option value="" disabled selected>Chọn kinh nghiệm</option>
@@ -456,20 +465,19 @@
                 </select>
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label for="agent-type">Loại Agent</label>
-                <select id="agent-type" name="agentType" aria-label="Loại Agent" required>
-                  <option value="" disabled selected>Chọn loại Agent</option>
-                  <option>Môi giới bất động sản</option>
-                  <option>Chuyên viên tài chính</option>
-                  <option>Chuyên viên định giá</option>
-                  <option>Chuyên viên pháp lý</option>
-                </select>
-              </div>
-              <div class="form-field">
-                <label>Số điện thoại người giới thiệu</label>
-                <input type="text" name="referral" placeholder="0901 234 567">
+            <div class="form-field full">
+              <label>Loại Agent <span class="role-hint">Chọn một hoặc nhiều vai trò</span></label>
+              <div class="role-picker" id="agent-role-picker">
+                <label class="role-chip"><input type="checkbox" name="agentType"
+                    value="Agent Buyer (Thứ cấp)"><span>Agent Buyer (Thứ cấp)</span></label>
+                <label class="role-chip"><input type="checkbox" name="agentType"
+                    value="Agent Buyer (Sơ cấp)"><span>Agent Buyer (Sơ cấp)</span></label>
+                <label class="role-chip"><input type="checkbox" name="agentType" value="Agent Listing"><span>Agent
+                    Listing</span></label>
+                <label class="role-chip"><input type="checkbox" name="agentType" value="Agent Mortgages"><span>Agent
+                    Mortgages</span></label>
+                <label class="role-chip"><input type="checkbox" name="agentType" value="Agent Value"><span>Agent
+                    Value</span></label>
               </div>
             </div>
             <div class="form-checkbox">
@@ -1099,12 +1107,13 @@
           </button>
           <div class="faq-answer">
             <p>CACN là hệ điều hành quản trị và hợp tác thống nhất cho mạng lưới Citics Agent trên toàn quốc.
-
+              <br><br>
               CACN kết nối môi giới bất động sản, chuyên viên tài chính, định giá và pháp lý vào một mạng lưới chung với
               chuẩn vận hành, phân vai rõ ràng và dữ liệu được ghi nhận trên nền tảng Citics Agent.
-
+              <br><br>
               Nhờ đó, CACN bảo vệ quyền lợi các bên, nâng cao hiệu quả phối hợp và tạo nền tảng để Citics mở rộng dịch
-              vụ trên quy mô toàn quốc.</p>
+              vụ trên quy mô toàn quốc.
+            </p>
           </div>
         </div>
         <div class="faq-item reveal reveal-delay-2">
