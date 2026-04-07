@@ -18,6 +18,7 @@ export default function EformMain() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [cityValue, setCityValue] = useState("");
+  const [occupationValue, setOccupationValue] = useState("");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -29,7 +30,7 @@ export default function EformMain() {
     if (!fd.get("name")?.toString().trim()) newErrors.name = "Vui lòng nhập họ và tên";
     const phone = fd.get("phone")?.toString().trim() || "";
     if (!phone) newErrors.phone = "Vui lòng nhập số điện thoại";
-    else if (!/^0\d{8,9}$/.test(phone.replace(/\s/g, ""))) newErrors.phone = "Số điện thoại không hợp lệ";
+    else if (!/^0\d{9}$/.test(phone.replace(/\s/g, ""))) newErrors.phone = "Số điện thoại phải đúng 10 số";
     if (!fd.get("city")) newErrors.city = "Vui lòng chọn thành phố";
     else if (fd.get("city") === "Khác" && !fd.get("cityOther")?.toString().trim()) newErrors.cityOther = "Vui lòng nhập tỉnh/thành phố";
     if (!fd.get("experience")) newErrors.experience = "Vui lòng chọn kinh nghiệm";
@@ -46,7 +47,7 @@ export default function EformMain() {
       phone: phone.replace(/\s/g, ""),
       city: fd.get("city") === "Khác" ? fd.get("cityOther")?.toString().trim() : fd.get("city"),
       referral: fd.get("referral")?.toString().trim() || "",
-      occupation: fd.get("occupation")?.toString().trim() || "",
+      occupation: fd.get("occupation") === "Khác" ? fd.get("occupationOther")?.toString().trim() || "" : fd.get("occupation")?.toString().trim() || "",
       experience: fd.get("experience"),
       agentType: fd.getAll("agentType").join(", "),
       courseInterest: fd.get("courseInterest") === "on",
@@ -59,6 +60,7 @@ export default function EformMain() {
       });
       setStatus("success");
       setCityValue("");
+      setOccupationValue("");
       form.reset();
     } catch {
       setStatus("error");
@@ -115,7 +117,7 @@ export default function EformMain() {
               </div>
               <div>
                 <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Số điện thoại <span className="text-red-400">*</span></label>
-                <input type="tel" name="phone" placeholder="0901 234 567" className={inputClass("phone")} />
+                <input type="tel" name="phone" placeholder="0901 234 567" maxLength={10} className={inputClass("phone")} />
                 {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
               </div>
             </div>
@@ -145,7 +147,21 @@ export default function EformMain() {
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Nghề nghiệp hiện tại</label>
-                <input type="text" name="occupation" placeholder="Nhập nghề nghiệp hiện tại" className={inputClass("occupation")} />
+                <select name="occupation" value={occupationValue} onChange={(e) => setOccupationValue(e.target.value)} aria-label="Nghề nghiệp" className={`${inputClass("occupation")} appearance-none bg-white`}>
+                  <option value="" disabled>Chọn nghề nghiệp</option>
+                  <option>Môi giới BĐS</option>
+                  <option>Kinh doanh / Sales</option>
+                  <option>Ngân hàng / Tài chính</option>
+                  <option>Nhân viên văn phòng</option>
+                  <option>Sinh viên</option>
+                  <option>Tự do / Freelancer</option>
+                  <option>Khác</option>
+                </select>
+                {occupationValue === "Khác" && (
+                  <div className="mt-2">
+                    <input type="text" name="occupationOther" placeholder="Nhập nghề nghiệp" className={inputClass("occupationOther")} />
+                  </div>
+                )}
               </div>
               <div>
                 <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Kinh nghiệm <span className="text-red-400">*</span></label>
