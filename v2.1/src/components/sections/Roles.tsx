@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
+import { BASE_PATH } from "@/lib/config";
 
 /* ── Filled SVG icons (matching published version) ── */
 const coopIcons: Record<string, (fill: string) => React.ReactNode> = {
@@ -258,7 +259,7 @@ export default function Roles() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] lg:w-[220px] lg:h-[220px] rounded-full bg-blue flex items-center justify-center z-[3] shadow-[0_0_0_16px_rgba(7,65,218,0.15),0_0_80px_rgba(7,65,218,0.2),0_16px_64px_rgba(7,65,218,0.25)]">
               <div className="absolute -inset-7 rounded-full border-2 border-blue/[0.12] animate-[centerPulse_3s_ease-in-out_infinite]" />
               <Image
-                src="/assets/Logo_citics_main_w.png"
+                src={`${BASE_PATH}/assets/Logo_citics_main_w.png`}
                 alt="Citics Agent"
                 width={140}
                 height={140}

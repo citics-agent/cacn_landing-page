@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { BASE_PATH } from "@/lib/config";
 
 const navLinks = [
   { href: "#cacn", label: "Citics Agent" },
@@ -57,7 +58,7 @@ export default function Nav() {
       >
         <div className="max-w-[1200px] mx-auto px-6 lg:px-[50px] flex items-center justify-between h-[72px] lg:h-[72px]">
           <Image
-            src="/assets/Logo_citics_main_w.png"
+            src={`${BASE_PATH}/assets/Logo_citics_main_w.png`}
             alt="Citics"
             width={100}
             height={32}

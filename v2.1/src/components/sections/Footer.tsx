@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { BASE_PATH } from "@/lib/config";
 
 const footerSections = [
   {
@@ -100,13 +101,13 @@ export default function Footer() {
             <h4 className="font-bold mb-4 text-sm">Tải ứng dụng</h4>
             <div className="flex gap-3">
               <div className="text-center">
-                <Image src="/assets/qr-android.png" alt="Quét mã QR để tải ứng dụng Citics Agent trên Android" width={80} height={80} className="rounded-lg" />
+                <Image src={`${BASE_PATH}/assets/qr-android.png`} alt="Quét mã QR để tải ứng dụng Citics Agent trên Android" width={80} height={80} className="rounded-lg" />
                 <a href="https://play.google.com/store/apps/details?id=vn.citics.agent" target="_blank" rel="noopener noreferrer" className="block mt-2">
                   <span className="text-xs text-white/40">Android</span>
                 </a>
               </div>
               <div className="text-center">
-                <Image src="/assets/qr-ios.png" alt="Quét mã QR để tải ứng dụng Citics Agent trên iOS" width={80} height={80} className="rounded-lg" />
+                <Image src={`${BASE_PATH}/assets/qr-ios.png`} alt="Quét mã QR để tải ứng dụng Citics Agent trên iOS" width={80} height={80} className="rounded-lg" />
                 <a href="https://apps.apple.com/vn/app/citics-agent/id6504488573" target="_blank" rel="noopener noreferrer" className="block mt-2">
                   <span className="text-xs text-white/40">iOS</span>
                 </a>
@@ -124,11 +125,11 @@ export default function Footer() {
             <h4 className="font-bold mb-4 text-sm">Tải ứng dụng</h4>
             <div className="flex gap-4">
               <div className="text-center">
-                <Image src="/assets/qr-android.png" alt="Quét mã QR để tải ứng dụng Citics Agent trên Android" width={80} height={80} className="rounded-lg" />
+                <Image src={`${BASE_PATH}/assets/qr-android.png`} alt="Quét mã QR để tải ứng dụng Citics Agent trên Android" width={80} height={80} className="rounded-lg" />
                 <span className="text-xs text-white/40 mt-1.5 block">Android</span>
               </div>
               <div className="text-center">
-                <Image src="/assets/qr-ios.png" alt="Quét mã QR để tải ứng dụng Citics Agent trên iOS" width={80} height={80} className="rounded-lg" />
+                <Image src={`${BASE_PATH}/assets/qr-ios.png`} alt="Quét mã QR để tải ứng dụng Citics Agent trên iOS" width={80} height={80} className="rounded-lg" />
                 <span className="text-xs text-white/40 mt-1.5 block">iOS</span>
               </div>
             </div>
@@ -137,7 +138,7 @@ export default function Footer() {
 
         {/* Company info */}
         <div className="border-t border-white/10 pt-8 mb-8">
-          <Image src="/assets/Logo_citics_main_w.png" alt="Citics" width={100} height={32} className="h-8 w-auto mb-4" />
+          <Image src={`${BASE_PATH}/assets/Logo_citics_main_w.png`} alt="Citics" width={100} height={32} className="h-8 w-auto mb-4" />
           <p className="text-white/50 text-sm mb-3 max-w-xl leading-relaxed">
             La Bàn Cho Mọi Quyết Định Bất Động Sản. Nền tảng bất động sản số ứng dụng dữ liệu & AI, giúp người dùng tự tin làm chủ hành trình an cư và đầu tư!
           </p>

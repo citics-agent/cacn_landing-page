@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { BASE_PATH } from "@/lib/config";
 
 const policies = [
-  { id: "overview", label: "Tổng quan", img: "/assets/policy-overview-new.svg" },
-  { id: "mortgages", label: "Mortgages", img: "/assets/policy-mortgages-new.svg" },
-  { id: "value", label: "Value", img: "/assets/policy-value-new.svg" },
-  { id: "buyer-secondary", label: "Buyer Thứ cấp", img: "/assets/policy-buyer-secondary-new.svg" },
-  { id: "buyer-primary", label: "Buyer Sơ cấp", img: "/assets/policy-buyer-primary-new.svg" },
+  { id: "overview", label: "Tổng quan", img: `${BASE_PATH}/assets/policy-overview-new.svg` },
+  { id: "mortgages", label: "Mortgages", img: `${BASE_PATH}/assets/policy-mortgages-new.svg` },
+  { id: "value", label: "Value", img: `${BASE_PATH}/assets/policy-value-new.svg` },
+  { id: "buyer-secondary", label: "Buyer Thứ cấp", img: `${BASE_PATH}/assets/policy-buyer-secondary-new.svg` },
+  { id: "buyer-primary", label: "Buyer Sơ cấp", img: `${BASE_PATH}/assets/policy-buyer-primary-new.svg` },
 ];
 
 export default function Policies() {

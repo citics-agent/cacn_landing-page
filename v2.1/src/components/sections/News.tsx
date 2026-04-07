@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { BASE_PATH } from "@/lib/config";
 
 const newsItems = [
   {
@@ -26,7 +27,7 @@ const newsItems = [
   },
   {
     title: "Startup công nghệ BĐS Việt huy động thành công hơn 2 triệu USD vòng pre-series A",
-    img: "/assets/news-vneconomy.jpeg",
+    img: `${BASE_PATH}/assets/news-vneconomy.jpeg`,
     url: "https://vneconomy.vn/mot-startup-cong-nghe-bat-dong-san-viet-huy-dong-thanh-cong-hon-2-trieu-usd-von-vong-pre-series-a.htm",
   },
 ];

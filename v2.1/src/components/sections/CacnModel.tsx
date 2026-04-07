@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BASE_PATH } from "@/lib/config";
 
 export default function CacnModel() {
   return (
@@ -10,7 +11,7 @@ export default function CacnModel() {
         <div className="rounded-[20px] overflow-hidden shadow-[0_20px_60px_rgba(7,65,218,0.22)] reveal reveal-delay-3">
           {/* Desktop banner */}
           <Image
-            src="/assets/CACN-revise-1920x1080.png"
+            src={`${BASE_PATH}/assets/CACN-revise-1920x1080.png`}
             alt="Citics Agent Cooperation Network"
             width={1920}
             height={1080}
@@ -19,7 +20,7 @@ export default function CacnModel() {
           />
           {/* Mobile banner */}
           <Image
-            src="/assets/CACN-revise-1080x1080.png"
+            src={`${BASE_PATH}/assets/CACN-revise-1080x1080.png`}
             alt="Citics Agent Cooperation Network"
             width={1080}
             height={1080}

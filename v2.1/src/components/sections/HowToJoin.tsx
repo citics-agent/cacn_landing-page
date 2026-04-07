@@ -2,22 +2,23 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { BASE_PATH } from "@/lib/config";
 
 const steps = [
   {
     num: 1, title: "Tải app & Đăng ký dịch vụ",
     desc: "Tải ứng dụng Citics Agent trên App Store (iOS) hoặc Google Play (Android) về điện thoại và đăng ký dịch vụ.",
-    img: "/assets/step1-main.png",
+    img: `${BASE_PATH}/assets/step1-main.png`,
     subSteps: [
-      { num: "1.1", title: "Đăng ký dịch vụ trên app", img: "/assets/dangkydichvu1.jpg" },
-      { num: "1.2", title: "Bấm xác nhận & đăng ký", img: "/assets/dangkydichvu2.jpg" },
-      { num: "1.3", title: "Xác thực thông tin tài khoản lần đầu", img: "/assets/dangkydichvu3.jpg" },
-      { num: "1.4", title: "Xác thực qua CCCD", img: "/assets/dangkydichvu4.jpg" },
+      { num: "1.1", title: "Đăng ký dịch vụ trên app", img: `${BASE_PATH}/assets/dangkydichvu1.jpg` },
+      { num: "1.2", title: "Bấm xác nhận & đăng ký", img: `${BASE_PATH}/assets/dangkydichvu2.jpg` },
+      { num: "1.3", title: "Xác thực thông tin tài khoản lần đầu", img: `${BASE_PATH}/assets/dangkydichvu3.jpg` },
+      { num: "1.4", title: "Xác thực qua CCCD", img: `${BASE_PATH}/assets/dangkydichvu4.jpg` },
     ],
   },
-  { num: 2, title: "Hội nhập & Đào tạo", desc: "Nhận cuộc gọi tư vấn từ đội ngũ C-ACN và xác nhận lịch đào tạo phù hợp.", img: "/assets/step2-main.png" },
-  { num: 3, title: "Thực hiện đào tạo", desc: "Tham gia khóa đào tạo online/offline để nắm vững quy trình và công cụ hỗ trợ.", img: "/assets/step3-main.png" },
-  { num: 4, title: "Hoàn thành & Kích hoạt vai trò", desc: "Hoàn tất đào tạo, kích hoạt tài khoản Agent và bắt đầu hoạt động kinh doanh.", img: "/assets/step4-main.png" },
+  { num: 2, title: "Hội nhập & Đào tạo", desc: "Nhận cuộc gọi tư vấn từ đội ngũ C-ACN và xác nhận lịch đào tạo phù hợp.", img: `${BASE_PATH}/assets/step2-main.png` },
+  { num: 3, title: "Thực hiện đào tạo", desc: "Tham gia khóa đào tạo online/offline để nắm vững quy trình và công cụ hỗ trợ.", img: `${BASE_PATH}/assets/step3-main.png` },
+  { num: 4, title: "Hoàn thành & Kích hoạt vai trò", desc: "Hoàn tất đào tạo, kích hoạt tài khoản Agent và bắt đầu hoạt động kinh doanh.", img: `${BASE_PATH}/assets/step4-main.png` },
 ];
 
 export default function HowToJoin() {

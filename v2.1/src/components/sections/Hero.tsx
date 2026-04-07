@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BASE_PATH } from "@/lib/config";
 
 const s = "var(--color-amber)";
 const iconProps = { viewBox: "0 0 24 24", fill: "none", className: "w-5 h-5 sm:w-7 sm:h-7" } as const;
@@ -38,7 +39,7 @@ export default function Hero() {
         {/* Mobile: Image on top, before everything */}
         <div className="flex justify-center lg:hidden mb-8 reveal">
           <Image
-            src="/assets/hero-1920x1080.png"
+            src={`${BASE_PATH}/assets/hero-1920x1080.png`}
             alt="Citics Agent - Môi giới BĐS thế hệ mới"
             width={1920}
             height={1080}
@@ -97,7 +98,7 @@ export default function Hero() {
           {/* Image — desktop only */}
           <div className="hidden lg:block lg:w-[52%] flex-shrink-0 reveal reveal-delay-2">
             <Image
-              src="/assets/hero-1920x1080.png"
+              src={`${BASE_PATH}/assets/hero-1920x1080.png`}
               alt="Citics Agent - Môi giới BĐS thế hệ mới"
               width={1920}
               height={1080}

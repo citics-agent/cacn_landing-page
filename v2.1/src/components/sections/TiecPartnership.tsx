@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BASE_PATH } from "@/lib/config";
 
 export default function TiecPartnership() {
   return (
@@ -7,7 +8,7 @@ export default function TiecPartnership() {
         <div className="rounded-[20px] overflow-hidden shadow-[0_20px_60px_rgba(7,65,218,0.22)] reveal">
           {/* Desktop banner */}
           <Image
-            src="/assets/TIEC-1920x500.webp"
+            src={`${BASE_PATH}/assets/TIEC-1920x500.webp`}
             alt="Bồi dưỡng nghiệp vụ môi giới bất động sản - TIEC"
             width={1920}
             height={500}
@@ -16,7 +17,7 @@ export default function TiecPartnership() {
           />
           {/* Mobile banner */}
           <Image
-            src="/assets/TIEC-1080x500.webp"
+            src={`${BASE_PATH}/assets/TIEC-1080x500.webp`}
             alt="Bồi dưỡng nghiệp vụ môi giới bất động sản - TIEC"
             width={1080}
             height={500}
