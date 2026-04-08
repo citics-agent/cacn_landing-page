@@ -28,11 +28,26 @@
 /* ── Base ── */
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
   overflow-x: hidden;
 }
 
 body {
   overflow-x: hidden;
+}
+
+section {
+  scroll-snap-align: start;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes tabProgress {
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 /* ── Transition shorthand ── */
@@ -104,6 +119,11 @@ select[class*="appearance-none"] {
 }
 
 /* ── Scroll reveal ── */
+/* Fallback: if JS hasn't loaded, show everything */
+.no-js .reveal {
+  opacity: 1;
+  transform: none;
+}
 .reveal {
   opacity: 0;
   transform: translateY(32px);

@@ -48,7 +48,7 @@ const solutions = [
 
 export default function Comparison() {
   return (
-    <section className="py-12 lg:py-20 bg-[#f0f4fa]" id="comparison">
+    <section className="py-12 lg:py-16 bg-[#f0f4fa]" id="comparison">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-[50px]">
         <h2 className="text-h2 font-extrabold tracking-[-0.5px] mb-4 text-center text-blue reveal">
           Vì sao C-ACN được xây dựng?

@@ -130,7 +130,7 @@ const valueProps = [
   },
   {
     title: "Trợ lý AI cá nhân",
-    desc: "Được CiCi hỗ trợ on-boarding và tra cứu dữ liệu bất động sản chỉ trong 1 nhấn",
+    desc: "Được CiCi hỗ trợ on-boarding và tra cứu dữ liệu bất động sản chỉ trong 1 tin nhắn",
     icon: (c: string) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
         <path d="M12 2a7 7 0 017 7v3a7 7 0 01-14 0V9a7 7 0 017-7z" stroke={c} strokeWidth="2" />
@@ -194,7 +194,7 @@ export default function Roles() {
   const coop = coopData[activeKey];
 
   return (
-    <section className="py-12 lg:py-20 bg-white" id="roles">
+    <section className="py-12 lg:py-16 bg-white" id="roles">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-[50px]">
         {/* Header */}
         <h3 className="text-h3 font-extrabold mb-3 reveal">
@@ -319,25 +319,27 @@ export default function Roles() {
         </div>
 
         {/* ═══ Giá trị khi tham gia C-ACN ═══ */}
-        <h3 className="text-h3 font-extrabold mt-20 mb-8 reveal">
-          Giá trị môi giới nhận được
-        </h3>
+        <div className="mt-20 grain relative bg-gradient-to-br from-blue to-blue-dark rounded-[24px] px-6 py-10 sm:px-10 sm:py-12 overflow-hidden reveal">
+          <h3 className="text-h3 font-extrabold mb-8 text-white reveal reveal-delay-1">
+            Giá trị môi giới nhận được
+          </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 reveal reveal-delay-1">
-          {valueProps.map((item, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-2xl border border-gray-200 shadow-[0_4px_24px_rgba(0,0,0,0.06)] px-4 py-4 sm:px-6 sm:py-6 hover:shadow-[0_8px_32px_rgba(7,65,218,0.12)] hover:-translate-y-0.5 transition-all flex gap-3 sm:block"
-            >
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue/10 flex items-center justify-center shrink-0 sm:mb-4">
-                {item.icon("#0741DA")}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 relative z-10 reveal reveal-delay-2">
+            {valueProps.map((item, i) => (
+              <div
+                key={i}
+                className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/15 px-4 py-4 sm:px-6 sm:py-6 hover:bg-white/15 hover:-translate-y-0.5 transition-all flex gap-3 sm:block"
+              >
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-turquoise/20 flex items-center justify-center shrink-0 sm:mb-4">
+                  {item.icon("#11DAEF")}
+                </div>
+                <div>
+                  <h4 className="font-bold text-[15px] text-white mb-1 sm:mb-2">{item.title}</h4>
+                  <p className="text-sm text-white/60 leading-relaxed">{item.desc}</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-bold text-[15px] text-gray-800 mb-1 sm:mb-2">{item.title}</h4>
-                <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 

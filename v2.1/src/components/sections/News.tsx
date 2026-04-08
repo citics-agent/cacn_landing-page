@@ -43,7 +43,7 @@ export default function News() {
   };
 
   return (
-    <section className="py-12 lg:py-20 bg-lavender-light" id="news">
+    <section className="py-12 lg:py-16 bg-lavender-light" id="news">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-[50px]">
         <div className="flex items-end justify-between mb-8">
           <div>

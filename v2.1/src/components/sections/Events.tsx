@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useEffect, useCallback } from "react";
+import { BASE_PATH } from "@/lib/config";
 
 const eventImages = [
   { file: "VIUS-3.jpg", alt: "Sự kiện VIUS - Citics Agent networking" },
@@ -56,7 +57,7 @@ export default function Events() {
   };
 
   return (
-    <section className="py-12 lg:py-20 bg-white" id="events">
+    <section className="py-12 lg:py-16 bg-white" id="events">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-[50px]">
         <div className="flex items-end justify-between mb-8">
           <div>
@@ -93,7 +94,7 @@ export default function Events() {
           {eventImages.map((img, i) => (
             <div key={i} className="flex-shrink-0 w-56 sm:w-64 md:w-72 snap-start group">
               <Image
-                src={`/assets/events/${img.file}`}
+                src={`${BASE_PATH}/assets/events/${img.file}`}
                 alt={img.alt}
                 width={400}
                 height={300}

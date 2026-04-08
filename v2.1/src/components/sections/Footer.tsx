@@ -74,7 +74,7 @@ function FooterAccordion({ title, links }: { title: string; links: { label: stri
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white pt-16 pb-8">
+    <footer className="bg-black text-white pt-12 pb-8">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-[50px]">
 
         {/* Desktop: grid columns */}

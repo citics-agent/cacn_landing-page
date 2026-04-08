@@ -23,7 +23,7 @@ const uspItems = [
 
 export default function Usp() {
   return (
-    <section className="py-12 lg:py-20 bg-white" id="usp">
+    <section className="py-12 lg:py-16 bg-white" id="usp">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-[50px]">
         <div className="text-xs font-bold text-blue tracking-[2.5px] uppercase mb-2 reveal">
           Why Citics

@@ -70,12 +70,12 @@ export default function EformMain() {
   const successCard = status === "success";
 
   const inputClass = (name: string) =>
-    `w-full border-[1.5px] rounded-xl px-4 py-3.5 text-[15px] focus:border-blue focus:shadow-[0_0_0_3px_rgba(7,65,218,0.12)] focus:outline-none transition-all ${
+    `w-full border-[1.5px] rounded-xl px-3 py-2.5 md:px-4 md:py-3.5 text-sm md:text-[15px] focus:border-blue focus:shadow-[0_0_0_3px_rgba(7,65,218,0.12)] focus:outline-none transition-all ${
       errors[name] ? "border-red-400" : "border-gray-200"
     }`;
 
   return (
-    <section className="grain relative py-12 lg:py-20 bg-gradient-hero" id="form1">
+    <section className="grain relative py-12 lg:py-16 bg-gradient-hero" id="form1">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-[50px] relative z-10">
         <div className="text-center mb-10">
           <div className="text-xs font-bold text-amber tracking-[2.5px] uppercase mb-2 reveal">
@@ -89,7 +89,7 @@ export default function EformMain() {
           </p>
         </div>
 
-        <div className="bg-white rounded-[20px] p-6 md:p-8 max-w-3xl mx-auto shadow-[0_32px_80px_rgba(7,65,218,0.32)] reveal reveal-delay-3">
+        <div className="bg-white rounded-[20px] p-4 md:p-8 max-w-3xl mx-auto shadow-[0_32px_80px_rgba(7,65,218,0.32)] reveal reveal-delay-3">
           {successCard ? (
             <div className="text-center py-12">
               <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5">
@@ -108,22 +108,22 @@ export default function EformMain() {
               </button>
             </div>
           ) : (
-          <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+          <form className="space-y-3 md:space-y-4" onSubmit={handleSubmit} noValidate>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Họ và tên <span className="text-red-400">*</span></label>
+                <label className="text-sm font-semibold text-gray-700 mb-1 block">Họ và tên <span className="text-red-400">*</span></label>
                 <input type="text" name="name" placeholder="Nguyễn Văn A" className={inputClass("name")} />
                 {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
               </div>
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Số điện thoại <span className="text-red-400">*</span></label>
+                <label className="text-sm font-semibold text-gray-700 mb-1 block">Số điện thoại <span className="text-red-400">*</span></label>
                 <input type="tel" name="phone" placeholder="0901 234 567" maxLength={10} className={inputClass("phone")} />
                 {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Thành phố <span className="text-red-400">*</span></label>
+                <label className="text-sm font-semibold text-gray-700 mb-1 block">Thành phố <span className="text-red-400">*</span></label>
                 <select name="city" value={cityValue} onChange={(e) => setCityValue(e.target.value)} aria-label="Thành phố" className={`${inputClass("city")} appearance-none bg-white`}>
                   <option value="" disabled>Chọn thành phố</option>
                   <option>Hồ Chí Minh</option>
@@ -140,13 +140,13 @@ export default function EformMain() {
                 )}
               </div>
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1.5 block">SĐT người giới thiệu</label>
+                <label className="text-sm font-semibold text-gray-700 mb-1 block">SĐT người giới thiệu</label>
                 <input type="text" name="referral" placeholder="0901 234 567" className={inputClass("referral")} />
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Nghề nghiệp hiện tại</label>
+                <label className="text-sm font-semibold text-gray-700 mb-1 block">Nghề nghiệp hiện tại</label>
                 <select name="occupation" value={occupationValue} onChange={(e) => setOccupationValue(e.target.value)} aria-label="Nghề nghiệp" className={`${inputClass("occupation")} appearance-none bg-white`}>
                   <option value="" disabled>Chọn nghề nghiệp</option>
                   <option>Môi giới BĐS</option>
@@ -164,7 +164,7 @@ export default function EformMain() {
                 )}
               </div>
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Kinh nghiệm <span className="text-red-400">*</span></label>
+                <label className="text-sm font-semibold text-gray-700 mb-1 block">Kinh nghiệm <span className="text-red-400">*</span></label>
                 <select name="experience" defaultValue="" aria-label="Kinh nghiệm" className={`${inputClass("experience")} appearance-none bg-white`}>
                   <option value="" disabled>Chọn kinh nghiệm</option>
                   <option>Chưa có kinh nghiệm</option>
@@ -199,7 +199,7 @@ export default function EformMain() {
               disabled={status === "loading"}
               className="w-full bg-amber text-blue font-bold py-4 rounded-[50px] hover:bg-amber-hover hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(255,191,1,0.4)] active:bg-amber-active active:translate-y-0 transition-all text-sm disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
             >
-              {status === "loading" ? "Đang gửi..." : "Đăng ký làm Agent"}
+              {status === "loading" ? "Đang gửi..." : "Nhận tư vấn miễn phí"}
             </button>
             {status === "error" && (
               <p className="text-red-400 text-sm text-center">Có lỗi xảy ra, vui lòng thử lại.</p>

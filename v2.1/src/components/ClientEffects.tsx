@@ -4,6 +4,9 @@ import { useEffect } from "react";
 
 export default function ClientEffects() {
   useEffect(() => {
+    // Remove no-js class so reveal animations work
+    document.documentElement.classList.remove("no-js");
+
     // Scroll progress bar
     const progressBar = document.getElementById("scrollProgress");
     const handleScroll = () => {

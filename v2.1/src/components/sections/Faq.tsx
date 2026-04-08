@@ -17,7 +17,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-12 lg:py-20 bg-solutions" id="faq">
+    <section className="py-12 lg:py-16 bg-solutions" id="faq">
       <div className="max-w-[800px] mx-auto px-6 lg:px-[50px]">
         <h2 className="text-h2 font-extrabold tracking-[-0.5px] mb-10 reveal reveal-delay-1">
           Bạn cần biết thêm?

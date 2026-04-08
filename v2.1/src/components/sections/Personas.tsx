@@ -31,19 +31,19 @@ const personas = [
 
 /* ── Desktop layout constants ── */
 const layout = [
-  { idx: 0, angle: 150, r: 420, labelPos: "above" as const },
-  { idx: 1, angle: 126, r: 300, labelPos: "below" as const },
-  { idx: 2, angle: 102, r: 420, labelPos: "above" as const },
-  { idx: 3, angle: 78,  r: 300, labelPos: "below" as const },
-  { idx: 4, angle: 54,  r: 420, labelPos: "above" as const },
-  { idx: 5, angle: 30,  r: 300, labelPos: "below" as const },
+  { idx: 0, angle: 150, r: 360, labelPos: "above" as const },
+  { idx: 1, angle: 126, r: 260, labelPos: "below" as const },
+  { idx: 2, angle: 102, r: 360, labelPos: "above" as const },
+  { idx: 3, angle: 78,  r: 260, labelPos: "below" as const },
+  { idx: 4, angle: 54,  r: 360, labelPos: "above" as const },
+  { idx: 5, angle: 30,  r: 260, labelPos: "below" as const },
 ];
 
 const W = 1100;
-const H = 620;
+const H = 520;
 const CX = W / 2;
 const CY = H + 20;
-const arcRings = [120, 180, 240, 300, 360, 420, 480];
+const arcRings = [140, 200, 260, 300, 360, 420];
 
 export default function Personas() {
   const [active, setActive] = useState<number>(0);
@@ -88,12 +88,12 @@ export default function Personas() {
   });
 
   return (
-    <section className="py-12 lg:py-20 bg-white overflow-hidden" id="personas">
+    <section className="py-12 lg:py-16 bg-white overflow-hidden" id="personas">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-[50px]">
         <h2 className="text-h2 font-extrabold tracking-[-0.5px] mb-4 reveal">
           Họ là....
         </h2>
-        <p className="text-gray-500 max-w-2xl mb-12 leading-[1.7] reveal reveal-delay-1">
+        <p className="text-gray-500 max-w-2xl mb-0 leading-[1.7] reveal reveal-delay-1">
           Gia nhập C-ACN, môi giới sẽ hoạt động ở một hoặc nhiều vai trò
         </p>
 
@@ -184,28 +184,28 @@ export default function Personas() {
                 key={`arc-${i}`}
                 d={`M ${CX - r},${CY} A ${r},${r} 0 0,1 ${CX + r},${CY}`}
                 stroke="#0741DA"
-                strokeWidth="1.5"
-                opacity={r === layout[active].r ? 0.3 : 0.04}
-                className="transition-opacity duration-500"
+                strokeWidth={r === layout[active].r ? "2" : "1.5"}
+                opacity={r === layout[active].r ? 0.35 : 0.1}
+                className="transition-all duration-500"
                 fill="none"
               />
             ))}
-            <circle cx={CX} cy={CY} r="4" fill="#0741DA" opacity="0.2" />
+            <circle cx={CX} cy={CY} r="6" fill="#0741DA" opacity="0.3" />
             {nodes.map((node, i) => (
               <line
                 key={`line-${i}`}
                 x1={CX} y1={CY} x2={node.x} y2={node.y}
-                stroke="#0741DA" strokeWidth="1"
-                opacity={active === i ? 0.2 : 0.04}
+                stroke="#0741DA" strokeWidth={active === i ? "1.5" : "1"}
+                opacity={active === i ? 0.3 : 0.08}
                 strokeDasharray="4 6"
-                className="transition-opacity duration-500"
+                className="transition-all duration-500"
               />
             ))}
             {nodes.map((node, i) => (
               <g key={`dot-${i}`}>
-                <circle cx={node.x} cy={node.y} r={active === i ? 18 : 0} fill="#0741DA" opacity={active === i ? 0.06 : 0} className="transition-all duration-500" />
-                <circle cx={node.x} cy={node.y} r={active === i ? 10 : 0} fill="#0741DA" opacity={active === i ? 0.1 : 0} className="transition-all duration-500" />
-                <circle cx={node.x} cy={node.y} r={active === i ? 6 : 4} fill="#0741DA" opacity={active === i ? 1 : 0.4} className="transition-all duration-300" />
+                <circle cx={node.x} cy={node.y} r={active === i ? 20 : 0} fill="#0741DA" opacity={active === i ? 0.08 : 0} className="transition-all duration-500" />
+                <circle cx={node.x} cy={node.y} r={active === i ? 12 : 0} fill="#0741DA" opacity={active === i ? 0.12 : 0} className="transition-all duration-500" />
+                <circle cx={node.x} cy={node.y} r={active === i ? 7 : 5} fill="#0741DA" opacity={active === i ? 1 : 0.5} className="transition-all duration-300" />
               </g>
             ))}
           </svg>
@@ -218,32 +218,32 @@ export default function Personas() {
             return (
               <div
                 key={i}
-                className={`absolute w-[210px] text-center cursor-default rounded-2xl transition-all duration-300 ${
+                className={`absolute w-[220px] text-center cursor-default rounded-xl border px-3 py-2.5 transition-[background-color,border-color,box-shadow] duration-300 ${
                   active === i
-                    ? "bg-white shadow-[0_8px_32px_rgba(7,65,218,0.12)] border border-blue/15 px-4 py-3 scale-105"
-                    : "px-2 py-1"
+                    ? "bg-white/90 backdrop-blur-sm shadow-[0_4px_20px_rgba(7,65,218,0.1)] border-blue/10"
+                    : "bg-transparent border-transparent shadow-none"
                 }`}
                 style={{
                   left: `${xPct}%`,
                   top: `${yPct}%`,
                   transform: isAbove
-                    ? `translate(-50%, calc(-100% - 16px))${active === i ? " scale(1.05)" : ""}`
-                    : `translate(-50%, 16px)${active === i ? " scale(1.05)" : ""}`,
+                    ? "translate(-50%, calc(-100% - 16px))"
+                    : "translate(-50%, 16px)",
                 }}
                 onMouseEnter={() => handleSelect(i)}
                 onMouseLeave={handleLeave}
                 onClick={() => handleSelect(i)}
               >
-                <h3 className={`font-bold leading-snug mb-1 transition-all duration-300 ${
-                  active === i ? "text-blue text-[16px]" : "text-gray-800 text-[14px]"
+                <h3 className={`font-bold leading-snug transition-all duration-300 ${
+                  active === i ? "text-blue text-[16px] mb-1" : "text-gray-800 text-[14px]"
                 }`}>
                   {node.persona.title}
                 </h3>
-                <p className={`leading-relaxed transition-all duration-300 ${
-                  active === i ? "text-gray-600 text-[13px]" : "text-gray-400 text-[12px]"
-                }`}>
-                  {node.persona.text}
-                </p>
+                {active === i && (
+                  <p className="text-gray-500 text-[13px] leading-relaxed animate-[fadeIn_0.3s_ease-out]">
+                    {node.persona.text}
+                  </p>
+                )}
               </div>
             );
           })}

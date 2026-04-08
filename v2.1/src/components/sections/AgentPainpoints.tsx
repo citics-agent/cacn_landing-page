@@ -8,7 +8,7 @@ const painpoints = [
 
 export default function AgentPainpoints() {
   return (
-    <section className="grain relative py-12 lg:py-20 bg-gradient-hero overflow-hidden" id="painpoints">
+    <section className="grain relative py-12 lg:py-16 bg-gradient-hero overflow-hidden" id="painpoints">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-[50px] relative z-10">
         <h2 className="text-h2 font-extrabold tracking-[-0.5px] text-white text-center mb-12 reveal">
           Dù ở vai trò nào, phần lớn môi giới đều gặp
@@ -36,11 +36,7 @@ export default function AgentPainpoints() {
           ))}
         </div>
 
-        <h3 className="text-h3 font-extrabold tracking-[-0.5px] text-white text-center mt-14 max-w-3xl mx-auto leading-[1.3] reveal reveal-delay-2">
-          Citics cung cấp hệ điều hành quản trị và hợp tác thống nhất {" "}
-          <span className="text-amber">cho mạng lưới môi giới trên toàn quốc.</span>
-        </h3>
-        <div className="flex justify-center mt-6 reveal reveal-delay-3">
+        <div className="flex justify-center mt-10 reveal reveal-delay-2">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.25">
             <path d="M12 5v14M19 12l-7 7-7-7" />
           </svg>

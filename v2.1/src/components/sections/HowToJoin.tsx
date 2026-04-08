@@ -31,7 +31,7 @@ export default function HowToJoin() {
     : current.img;
 
   return (
-    <section className="py-12 lg:py-20 bg-solutions" id="journey">
+    <section className="py-12 lg:py-16 bg-solutions" id="journey">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-[50px]">
         <h2 className="text-h2 font-extrabold tracking-[-0.5px] mb-10 reveal reveal-delay-1">
           4 bước để tham gia
@@ -54,9 +54,6 @@ export default function HowToJoin() {
 
           {/* Right: Steps with vertical timeline */}
           <div className="flex-1 relative">
-            {/* Timeline line */}
-            <div className="absolute left-[19px] top-8 bottom-8 w-[3px] bg-lavender hidden lg:block" />
-
             <div className="space-y-3">
               {steps.map((step, i) => (
                 <div key={i}>

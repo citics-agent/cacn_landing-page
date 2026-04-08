@@ -40,7 +40,7 @@ export default function Achievements() {
   const { ref, display } = useCountUp(5000);
 
   return (
-    <section className="grain relative py-12 lg:py-20 bg-gradient-hero">
+    <section className="grain relative py-12 lg:py-16 bg-gradient-hero">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-[50px] relative z-10">
         <h2 className="text-h2 font-extrabold tracking-[-0.5px] text-white text-center reveal">
           Hơn{" "}

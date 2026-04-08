@@ -2,7 +2,7 @@ import Image from "next/image";
 import { BASE_PATH } from "@/lib/config";
 
 const s = "var(--color-amber)";
-const iconProps = { viewBox: "0 0 24 24", fill: "none", className: "w-7 h-7 sm:w-9 sm:h-9" } as const;
+const iconProps = { viewBox: "0 0 24 24", fill: "none", className: "w-7 h-7 sm:w-9 sm:h-9 lg:w-9 lg:h-9" } as const;
 const strokeProps = { stroke: s, strokeWidth: "2", strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
 
 const benefits = [
@@ -37,47 +37,47 @@ export default function Hero() {
     >
       <div className="max-w-[1200px] w-full mx-auto px-6 lg:px-[50px] pt-14 pb-16 lg:pt-20 lg:pb-20 relative z-10">
         {/* Mobile: Image on top, before everything */}
-        <div className="flex justify-center lg:hidden mb-8 reveal">
+        <div className="flex justify-center lg:hidden mb-4 reveal">
           <Image
             src={`${BASE_PATH}/assets/hero-1920x1080.png`}
             alt="Citics Agent - Môi giới BĐS thế hệ mới"
             width={1920}
             height={1080}
             priority
-            className="w-full h-auto max-w-[320px] mx-auto"
+            className="w-[130%] max-w-none h-auto"
           />
         </div>
 
         {/* Centered headline on top */}
-        <div className="text-center text-white mb-10 lg:mb-14">
+        <div className="text-center text-white mb-4 lg:mb-14">
           <h1 className="text-h1 lg:!text-[40px] xl:!text-[46px] font-extrabold leading-tight reveal">
             La Bàn Cho Môi Giới Bất Động Sản Thế Hệ Mới
           </h1>
         </div>
 
         {/* Content LEFT + Image RIGHT */}
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-6">
+        <div className="flex flex-col lg:flex-row items-center gap-0 lg:gap-6">
           {/* Content */}
           <div className="lg:w-[45%] flex-shrink-0 text-white text-center lg:text-left">
-            <p className="text-[17px] lg:text-[15px] text-white/80 max-w-2xl lg:max-w-none mx-auto lg:mx-0 leading-relaxed mb-10 reveal reveal-delay-1">
+            <p className="text-[14px] sm:text-[17px] lg:text-[15px] text-white/80 max-w-2xl lg:max-w-none mx-auto lg:mx-0 leading-relaxed mb-5 lg:mb-10 reveal reveal-delay-1">
               Giúp môi giới làm chủ sự nghiệp bất động sản, biến mỗi giao dịch thành nhiều nguồn thu nhập với mô hình quản trị và hợp tác mạng lưới trên toàn quốc
             </p>
-            <ul className="space-y-5 mb-8 text-left reveal reveal-delay-2">
+            <ul className="space-y-1.5 sm:space-y-7 lg:space-y-5 mb-4 sm:mb-8 text-left reveal reveal-delay-2">
               {benefits.map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-[16px] lg:text-[17px] whitespace-nowrap">
+                <li key={i} className="flex items-start gap-3 text-[16px] sm:text-[20px] lg:text-[17px]">
                   <span className="flex-shrink-0 mt-0.5">
                     {item.icon}
                   </span>
                   <span>
                     {item.text}
                     {"footnote" in item && item.footnote && (
-                      <span className="block text-white/50 text-sm mt-1">* {item.footnote}</span>
+                      <span className="block text-white/50 text-xs sm:text-base lg:text-sm mt-0.5">* {item.footnote}</span>
                     )}
                   </span>
                 </li>
               ))}
             </ul>
-            <div className="flex justify-center lg:justify-start mt-14 reveal reveal-delay-3">
+            <div className="flex justify-center lg:justify-start mt-6 sm:mt-10 lg:mt-14 reveal reveal-delay-3">
               <a
                 href="#form1"
                 className="w-full sm:w-auto text-center bg-amber text-blue font-bold text-[15px] px-10 py-4 rounded-[50px] hover:bg-amber-hover hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(255,191,1,0.4)] active:bg-amber-active active:translate-y-0 transition-all"
