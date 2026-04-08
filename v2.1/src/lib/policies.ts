@@ -7,8 +7,8 @@ import { BASE_PATH } from "./config";
 export const policies = [
   { id: "overview", label: "Chính sách hoa hồng", ext: "png" as const },
   { id: "referral", label: "Thưởng giới thiệu", ext: "jpg" as const },
-  { id: "khuyenmaihomes", label: "Khuyến mãi Mua-Bán", ext: "jpg" as const },
-  { id: "khuyenmaimortgages", label: "Khuyến mãi vay", ext: "jpg" as const },
+  { id: "khuyenmaihomes", label: "Thưởng niêm yết", ext: "jpg" as const },
+  { id: "khuyenmaimortgages", label: "Thưởng nóng vay thế chấp", ext: "jpg" as const },
 ];
 
 export type PolicyId = (typeof policies)[number]["id"];
