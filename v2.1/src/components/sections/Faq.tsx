@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CONTACT } from "@/lib/config";
 
 const faqItems = [
   {
@@ -10,7 +11,7 @@ const faqItems = [
   { q: "Điều kiện để tham gia C-ACN?", a: "Bạn cần đăng ký tài khoản trên app Citics Agent, hoàn thành khoá đào tạo cơ bản và được xác minh bởi đội ngũ C-ACN. Quy trình hoàn toàn miễn phí và được hỗ trợ từ A-Z." },
   { q: "Hoa hồng được tính như thế nào?", a: "Hoa hồng được ghi nhận cho từng dịch vụ trong cùng một giao dịch: môi giới mua bán, định giá, tín dụng, pháp lý. Bạn có thể tham gia nhiều vai trò để gia tăng thu nhập từ một BĐS duy nhất." },
   { q: "Tôi có cần kinh nghiệm môi giới không?", a: "Không bắt buộc. Citics cung cấp chương trình đào tạo miễn phí từ cơ bản đến nâng cao, cùng công cụ AI hỗ trợ và mạng lưới mentor giúp bạn bắt đầu sự nghiệp môi giới chuyên nghiệp." },
-  { q: "Làm sao để liên hệ hỗ trợ?", a: "Bạn có thể liên hệ qua hotline 1900 633075, email cacn@citics.com.vn, hoặc trực tiếp qua app Citics Agent. Đội ngũ C-ACN hỗ trợ 24/7." },
+  { q: "Làm sao để liên hệ hỗ trợ?", a: `Bạn có thể liên hệ qua hotline ${CONTACT.hotline}, email ${CONTACT.email}, hoặc trực tiếp qua app Citics Agent. Đội ngũ C-ACN hỗ trợ 24/7.` },
 ];
 
 export default function Faq() {

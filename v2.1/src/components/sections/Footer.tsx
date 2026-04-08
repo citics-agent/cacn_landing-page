@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { BASE_PATH } from "@/lib/config";
+import { BASE_PATH, CONTACT } from "@/lib/config";
 
 const footerSections = [
   {
@@ -143,20 +143,20 @@ export default function Footer() {
             La Bàn Cho Mọi Quyết Định Bất Động Sản. Nền tảng bất động sản số ứng dụng dữ liệu & AI, giúp người dùng tự tin làm chủ hành trình an cư và đầu tư!
           </p>
           <p className="text-white/30 text-xs mb-3">
-            Căn LV1-00.16, Tầng trệt, Thủ Thiêm Lake View 1 - Số 19 Đường Ven Hồ Trung Tâm, Phường An Khánh, TP. Hồ Chí Minh
+            {CONTACT.address}
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap gap-x-4 sm:gap-x-6 gap-y-2 text-white/40 text-xs">
             <span className="flex items-center gap-1.5">
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-              <strong className="text-white/60">1900 633075</strong>
+              <strong className="text-white/60">{CONTACT.hotline}</strong>
             </span>
             <span className="flex items-center gap-1.5">
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="M22 7l-10 7L2 7" /></svg>
-              <strong className="text-white/60">cacn@citics.com.vn</strong>
+              <strong className="text-white/60">{CONTACT.email}</strong>
             </span>
             <span className="flex items-center gap-1.5">
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>
-              ĐKKD: <strong className="text-white/60">0315391639</strong>
+              ĐKKD: <strong className="text-white/60">{CONTACT.dkkd}</strong>
             </span>
           </div>
         </div>

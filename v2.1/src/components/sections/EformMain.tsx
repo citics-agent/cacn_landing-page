@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 
-const SCRIPT_URL = process.env.NEXT_PUBLIC_GSHEET_URL!;
+const SCRIPT_URL = process.env.NEXT_PUBLIC_GSHEET_URL ?? "";
 
 const agentRoles = [
   "Agent Buyer (Thứ cấp)",
@@ -52,6 +52,11 @@ export default function EformMain() {
       agentType: fd.getAll("agentType").join(", "),
       courseInterest: fd.get("courseInterest") === "on",
     };
+
+    if (!SCRIPT_URL) {
+      setStatus("error");
+      return;
+    }
 
     try {
       await fetch(SCRIPT_URL, {
@@ -112,43 +117,44 @@ export default function EformMain() {
           <form className="space-y-3 md:space-y-4" onSubmit={handleSubmit} noValidate>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1 block">Họ và tên <span className="text-red-400">*</span></label>
-                <input type="text" name="name" placeholder="Nguyễn Văn A" className={inputClass("name")} />
-                {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
+                <label htmlFor="f-name" className="text-sm font-semibold text-gray-700 mb-1 block">Họ và tên <span className="text-red-400">*</span></label>
+                <input id="f-name" type="text" name="name" placeholder="Nguyễn Văn A" aria-describedby={errors.name ? "err-name" : undefined} className={inputClass("name")} />
+                {errors.name && <p id="err-name" className="text-red-400 text-xs mt-1">{errors.name}</p>}
               </div>
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1 block">Số điện thoại <span className="text-red-400">*</span></label>
-                <input type="tel" name="phone" placeholder="0901 234 567" maxLength={10} className={inputClass("phone")} />
-                {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
+                <label htmlFor="f-phone" className="text-sm font-semibold text-gray-700 mb-1 block">Số điện thoại <span className="text-red-400">*</span></label>
+                <input id="f-phone" type="tel" name="phone" placeholder="0901 234 567" maxLength={12} aria-describedby={errors.phone ? "err-phone" : undefined} className={inputClass("phone")} />
+                {errors.phone && <p id="err-phone" className="text-red-400 text-xs mt-1">{errors.phone}</p>}
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1 block">Thành phố <span className="text-red-400">*</span></label>
-                <select name="city" value={cityValue} onChange={(e) => setCityValue(e.target.value)} aria-label="Thành phố" className={`${inputClass("city")} appearance-none bg-white`}>
+                <label htmlFor="f-city" className="text-sm font-semibold text-gray-700 mb-1 block">Thành phố <span className="text-red-400">*</span></label>
+                <select id="f-city" name="city" value={cityValue} onChange={(e) => setCityValue(e.target.value)} aria-describedby={errors.city ? "err-city" : undefined} className={`${inputClass("city")} appearance-none bg-white`}>
                   <option value="" disabled>Chọn thành phố</option>
                   <option>Hồ Chí Minh</option>
                   <option>Hà Nội</option>
                   <option>Đà Nẵng</option>
                   <option>Khác</option>
                 </select>
-                {errors.city && <p className="text-red-400 text-xs mt-1">{errors.city}</p>}
+                {errors.city && <p id="err-city" className="text-red-400 text-xs mt-1">{errors.city}</p>}
                 {cityValue === "Khác" && (
                   <div className="mt-2">
-                    <input type="text" name="cityOther" placeholder="Nhập tỉnh/thành phố" className={inputClass("cityOther")} />
-                    {errors.cityOther && <p className="text-red-400 text-xs mt-1">{errors.cityOther}</p>}
+                    <label htmlFor="f-cityOther" className="sr-only">Tỉnh/thành phố khác</label>
+                    <input id="f-cityOther" type="text" name="cityOther" placeholder="Nhập tỉnh/thành phố" aria-describedby={errors.cityOther ? "err-cityOther" : undefined} className={inputClass("cityOther")} />
+                    {errors.cityOther && <p id="err-cityOther" className="text-red-400 text-xs mt-1">{errors.cityOther}</p>}
                   </div>
                 )}
               </div>
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1 block">SĐT người giới thiệu</label>
-                <input type="text" name="referral" placeholder="0901 234 567" className={inputClass("referral")} />
+                <label htmlFor="f-referral" className="text-sm font-semibold text-gray-700 mb-1 block">SĐT người giới thiệu</label>
+                <input id="f-referral" type="tel" name="referral" placeholder="0901 234 567" className={inputClass("referral")} />
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1 block">Nghề nghiệp hiện tại</label>
-                <select name="occupation" value={occupationValue} onChange={(e) => setOccupationValue(e.target.value)} aria-label="Nghề nghiệp" className={`${inputClass("occupation")} appearance-none bg-white`}>
+                <label htmlFor="f-occupation" className="text-sm font-semibold text-gray-700 mb-1 block">Nghề nghiệp hiện tại</label>
+                <select id="f-occupation" name="occupation" value={occupationValue} onChange={(e) => setOccupationValue(e.target.value)} className={`${inputClass("occupation")} appearance-none bg-white`}>
                   <option value="" disabled>Chọn nghề nghiệp</option>
                   <option>Môi giới BĐS</option>
                   <option>Kinh doanh / Sales</option>
@@ -160,20 +166,21 @@ export default function EformMain() {
                 </select>
                 {occupationValue === "Khác" && (
                   <div className="mt-2">
-                    <input type="text" name="occupationOther" placeholder="Nhập nghề nghiệp" className={inputClass("occupationOther")} />
+                    <label htmlFor="f-occupationOther" className="sr-only">Nghề nghiệp khác</label>
+                    <input id="f-occupationOther" type="text" name="occupationOther" placeholder="Nhập nghề nghiệp" className={inputClass("occupationOther")} />
                   </div>
                 )}
               </div>
               <div>
-                <label className="text-sm font-semibold text-gray-700 mb-1 block">Kinh nghiệm <span className="text-red-400">*</span></label>
-                <select name="experience" defaultValue="" aria-label="Kinh nghiệm" className={`${inputClass("experience")} appearance-none bg-white`}>
+                <label htmlFor="f-experience" className="text-sm font-semibold text-gray-700 mb-1 block">Kinh nghiệm <span className="text-red-400">*</span></label>
+                <select id="f-experience" name="experience" defaultValue="" aria-describedby={errors.experience ? "err-experience" : undefined} className={`${inputClass("experience")} appearance-none bg-white`}>
                   <option value="" disabled>Chọn kinh nghiệm</option>
                   <option>Chưa có kinh nghiệm</option>
                   <option>Dưới 1 năm</option>
                   <option>1-3 năm</option>
                   <option>Trên 3 năm</option>
                 </select>
-                {errors.experience && <p className="text-red-400 text-xs mt-1">{errors.experience}</p>}
+                {errors.experience && <p id="err-experience" className="text-red-400 text-xs mt-1">{errors.experience}</p>}
               </div>
             </div>
             <div>

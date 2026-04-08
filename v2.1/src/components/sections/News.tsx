@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
 import { BASE_PATH } from "@/lib/config";
 
@@ -82,14 +81,13 @@ export default function News() {
               rel="noopener noreferrer"
               className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] bg-white rounded-[20px] overflow-hidden shadow-[0_2px_10px_rgba(7,65,218,0.07)] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(7,65,218,0.15)] transition-all duration-300 group snap-start"
             >
-              <Image
+              <img
                 src={item.img}
                 alt={item.title}
                 width={400}
                 height={250}
                 className="w-full h-48 object-cover"
                 loading="lazy"
-                unoptimized={item.img.startsWith("http")}
               />
               <div className="p-5">
                 <h4 className="font-extrabold text-sm leading-snug mb-3 line-clamp-2">{item.title}</h4>

@@ -1,3 +1,4 @@
+import ErrorBoundary from "@/components/ErrorBoundary";
 import ClientEffects from "@/components/ClientEffects";
 import Nav from "@/components/sections/Nav";
 import Hero from "@/components/sections/Hero";
@@ -22,18 +23,18 @@ export default function Home() {
       <ClientEffects />
       <Nav />
       <Hero />
-      <EformMain />
+      <ErrorBoundary><EformMain /></ErrorBoundary>
       <Achievements />
-      <Personas />
+      <ErrorBoundary><Personas /></ErrorBoundary>
       <AgentPainpoints />
       <CacnModel />
-      <Roles />
-      <Policies />
+      <ErrorBoundary><Roles /></ErrorBoundary>
+      <ErrorBoundary><Policies /></ErrorBoundary>
       <CtaCompact
         title="Bạn đã sẵn sàng tham gia C&#8209;ACN?"
         subtitle="Đăng ký ngay để bắt đầu hành trình môi giới chuyên nghiệp"
       />
-      <Events />
+      <ErrorBoundary><Events /></ErrorBoundary>
       <section className="grain relative py-12 bg-gradient-hero">
         <TiecPartnership />
         <div className="max-w-[800px] mx-auto px-6 lg:px-[50px] relative z-10 text-center mt-10">
@@ -46,8 +47,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Faq />
-      <News />
+      <ErrorBoundary><Faq /></ErrorBoundary>
+      <ErrorBoundary><News /></ErrorBoundary>
       <FinalCta />
       <Footer />
     </>
