@@ -5,7 +5,7 @@ import { BASE_PATH } from "./config";
  * rồi drop desktop.{png,jpg,jpeg} + mobile.{png,jpg,jpeg} vào.
  */
 export const policies = [
-  { id: "overview", label: "Chính sách hoa hồng", ext: "png" as const },
+  { id: "overview", label: "Chính sách hoa hồng", ext: "jpg" as const },
   { id: "referral", label: "Thưởng giới thiệu", ext: "jpg" as const },
   { id: "khuyenmaihomes", label: "Thưởng niêm yết", ext: "jpg" as const },
   { id: "khuyenmaimortgages", label: "Thưởng nóng vay thế chấp", ext: "jpg" as const },
