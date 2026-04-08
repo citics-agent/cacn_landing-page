@@ -10,6 +10,13 @@ function PolicyImage({ id, label, ext, isActive }: { id: string; label: string; 
   const desktop = policyImage(id, "desktop", ext);
   const mobile = policyImage(id, "mobile", ext);
 
+  const markLoaded = () => setLoaded(true);
+
+  // Handle cached images: when React attaches the ref, check if already loaded
+  const imgRef = useCallback((img: HTMLImageElement | null) => {
+    if (img?.complete && img.naturalWidth > 0) setLoaded(true);
+  }, []);
+
   return (
     <div
       className={`w-full h-full transition-opacity duration-200 ${
@@ -20,10 +27,12 @@ function PolicyImage({ id, label, ext, isActive }: { id: string; label: string; 
       <picture className="hidden lg:block w-full h-full">
         <source srcSet={desktop.webp} type="image/webp" />
         <img
+          ref={imgRef}
           src={desktop.fallback}
           alt={`Chính sách ${label} - Citics Agent`}
           className="w-full h-full object-contain"
-          onLoad={() => setLoaded(true)}
+          onLoad={markLoaded}
+          onError={markLoaded}
           loading={isActive ? "eager" : "lazy"}
         />
       </picture>
@@ -31,14 +40,16 @@ function PolicyImage({ id, label, ext, isActive }: { id: string; label: string; 
       <picture className="lg:hidden block w-full h-full">
         <source srcSet={mobile.webp} type="image/webp" />
         <img
+          ref={imgRef}
           src={mobile.fallback}
           alt={`Chính sách ${label} - Citics Agent`}
           className="w-full h-full object-contain"
-          onLoad={() => setLoaded(true)}
+          onLoad={markLoaded}
+          onError={markLoaded}
           loading={isActive ? "eager" : "lazy"}
         />
       </picture>
-      {/* Loading skeleton — behind images, fades out when loaded */}
+      {/* Loading skeleton — fades out when loaded */}
       <div className={`absolute inset-0 bg-gray-100 flex items-center justify-center transition-opacity duration-300 ${loaded ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
         <div className="flex flex-col items-center gap-2">
           <svg className="w-8 h-8 text-gray-300 animate-spin" viewBox="0 0 24 24" fill="none">
@@ -54,28 +65,14 @@ function PolicyImage({ id, label, ext, isActive }: { id: string; label: string; 
 
 export default function Policies() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isFading, setIsFading] = useState(false);
   const [autoRotate, setAutoRotate] = useState(true);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
 
-  const switchTo = useCallback((index: number) => {
-    if (index === activeIndex) return;
-    setIsFading(true);
-    setTimeout(() => {
-      setActiveIndex(index);
-      setIsFading(false);
-    }, 200);
-  }, [activeIndex]);
-
   useEffect(() => {
     if (!autoRotate) return;
     intervalRef.current = setInterval(() => {
-      setIsFading(true);
-      setTimeout(() => {
-        setActiveIndex((prev) => (prev + 1) % policies.length);
-        setIsFading(false);
-      }, 200);
+      setActiveIndex((prev) => (prev + 1) % policies.length);
     }, ROTATION_INTERVAL);
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
   }, [autoRotate]);
@@ -83,7 +80,7 @@ export default function Policies() {
   function handleTabClick(index: number) {
     setAutoRotate(false);
     if (intervalRef.current) clearInterval(intervalRef.current);
-    switchTo(index);
+    setActiveIndex(index);
   }
 
   return (

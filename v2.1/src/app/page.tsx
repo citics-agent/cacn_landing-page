@@ -1,16 +1,13 @@
 import ClientEffects from "@/components/ClientEffects";
 import Nav from "@/components/sections/Nav";
 import Hero from "@/components/sections/Hero";
-import Usp from "@/components/sections/Usp";
 import Achievements from "@/components/sections/Achievements";
 import Personas from "@/components/sections/Personas";
 import AgentPainpoints from "@/components/sections/AgentPainpoints";
 import CacnModel from "@/components/sections/CacnModel";
-import Comparison from "@/components/sections/Comparison";
 import EformMain from "@/components/sections/EformMain";
 import Roles from "@/components/sections/Roles";
 import Policies from "@/components/sections/Policies";
-import HowToJoin from "@/components/sections/HowToJoin";
 import CtaCompact from "@/components/sections/CtaCompact";
 import Events from "@/components/sections/Events";
 import TiecPartnership from "@/components/sections/TiecPartnership";
@@ -26,15 +23,12 @@ export default function Home() {
       <Nav />
       <Hero />
       <EformMain />
-      {/* <Usp /> */}
       <Achievements />
       <Personas />
       <AgentPainpoints />
       <CacnModel />
-      {/* <Comparison /> */}
       <Roles />
       <Policies />
-      {/* <HowToJoin /> */}
       <CtaCompact
         title="Bạn đã sẵn sàng tham gia C&#8209;ACN?"
         subtitle="Đăng ký ngay để bắt đầu hành trình môi giới chuyên nghiệp"
