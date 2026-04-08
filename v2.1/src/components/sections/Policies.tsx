@@ -5,10 +5,10 @@ import { policies, policyImage } from "@/lib/policies";
 
 const ROTATION_INTERVAL = 5000;
 
-function PolicyImage({ id, label, isActive }: { id: string; label: string; isActive: boolean }) {
+function PolicyImage({ id, label, ext, isActive }: { id: string; label: string; ext: "png" | "jpg" | "jpeg"; isActive: boolean }) {
   const [loaded, setLoaded] = useState(false);
-  const desktop = policyImage(id, "desktop");
-  const mobile = policyImage(id, "mobile");
+  const desktop = policyImage(id, "desktop", ext);
+  const mobile = policyImage(id, "mobile", ext);
 
   return (
     <div
@@ -32,7 +32,7 @@ function PolicyImage({ id, label, isActive }: { id: string; label: string; isAct
       <picture className="hidden lg:block w-full h-full">
         <source srcSet={desktop.webp} type="image/webp" />
         <img
-          src={desktop.png}
+          src={desktop.fallback}
           alt={`Chính sách ${label} - Citics Agent`}
           className="w-full h-full object-contain"
           onLoad={() => setLoaded(true)}
@@ -43,7 +43,7 @@ function PolicyImage({ id, label, isActive }: { id: string; label: string; isAct
       <picture className="lg:hidden block w-full h-full">
         <source srcSet={mobile.webp} type="image/webp" />
         <img
-          src={mobile.png}
+          src={mobile.fallback}
           alt={`Chính sách ${label} - Citics Agent`}
           className="w-full h-full object-contain"
           onLoad={() => setLoaded(true)}
@@ -125,7 +125,7 @@ export default function Policies() {
           {/* Right — image viewer */}
           <div className="w-[330px] h-[330px] mx-auto lg:mx-0 lg:w-[900px] lg:h-[600px] relative rounded-[20px] overflow-hidden border border-gray-200 shadow-[0_2px_10px_rgba(7,65,218,0.07)]">
             {policies.map((p, i) => (
-              <PolicyImage key={p.id} id={p.id} label={p.label} isActive={activeIndex === i} />
+              <PolicyImage key={p.id} id={p.id} label={p.label} ext={p.ext} isActive={activeIndex === i} />
             ))}
           </div>
 

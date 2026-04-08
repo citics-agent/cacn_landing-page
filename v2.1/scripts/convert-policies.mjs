@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Converts all PNG files in public/assets/policies/{id}/ to WebP.
+ * Converts all PNG/JPG/JPEG files in public/assets/policies/{id}/ to WebP.
  * Run: node scripts/convert-policies.mjs
- * MKT drops desktop.png + mobile.png into each folder.
+ * MKT drops desktop.{png,jpg,jpeg} + mobile.{png,jpg,jpeg} into each folder.
  * This script generates desktop.webp + mobile.webp alongside them.
  */
 import { readdir, stat } from "node:fs/promises";
@@ -23,18 +23,18 @@ async function convert() {
     if (!folderStat.isDirectory()) continue;
 
     const files = await readdir(folderPath);
-    const pngFiles = files.filter((f) => f.endsWith(".png"));
+    const imgFiles = files.filter((f) => /\.(png|jpe?g)$/i.test(f));
 
-    for (const png of pngFiles) {
-      const webp = png.replace(/\.png$/, ".webp");
-      const pngPath = join(folderPath, png);
+    for (const img of imgFiles) {
+      const webp = img.replace(/\.(png|jpe?g)$/i, ".webp");
+      const imgPath = join(folderPath, img);
       const webpPath = join(folderPath, webp);
 
-      // Skip if webp already exists and is newer than png
+      // Skip if webp already exists and is newer than source
       try {
-        const pngStat = await stat(pngPath);
+        const imgStat = await stat(imgPath);
         const webpStat = await stat(webpPath);
-        if (webpStat.mtimeMs >= pngStat.mtimeMs) {
+        if (webpStat.mtimeMs >= imgStat.mtimeMs) {
           skipped++;
           continue;
         }
@@ -42,9 +42,9 @@ async function convert() {
         // webp doesn't exist yet, convert
       }
 
-      await sharp(pngPath).webp({ quality: 80 }).toFile(webpPath);
+      await sharp(imgPath).webp({ quality: 80 }).toFile(webpPath);
       converted++;
-      console.log(`  ✓ ${folder}/${png} → ${webp}`);
+      console.log(`  ✓ ${folder}/${img} → ${webp}`);
     }
   }
 
