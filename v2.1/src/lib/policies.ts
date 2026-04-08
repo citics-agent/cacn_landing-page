@@ -5,10 +5,10 @@ import { BASE_PATH } from "./config";
  * rồi drop desktop.{png,jpg,jpeg} + mobile.{png,jpg,jpeg} vào.
  */
 export const policies = [
-  { id: "overview", label: "Tổng quan", ext: "png" as const },
-  { id: "km-gioi-thieu", label: "KM Giới thiệu", ext: "jpg" as const },
-  { id: "km-ch", label: "KM CH", ext: "jpg" as const },
-  { id: "km-cm", label: "KM CM", ext: "jpg" as const },
+  { id: "overview", label: "Chính sách hoa hồng", ext: "png" as const },
+  { id: "referral", label: "Thưởng giới thiệu", ext: "jpg" as const },
+  { id: "khuyenmaihomes", label: "Khuyến mãi Mua-Bán", ext: "jpg" as const },
+  { id: "khuyenmaimortgages", label: "Khuyến mãi vay", ext: "jpg" as const },
 ];
 
 export type PolicyId = (typeof policies)[number]["id"];
