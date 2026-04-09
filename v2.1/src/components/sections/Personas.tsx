@@ -20,7 +20,7 @@ const personas = [
     text: "Tìm kiếm cơ hội giúp khách giải ngân cho hồ sơ của khách hàng",
   },
   {
-    title: "CV tài chính đã nghỉ việc",
+    title: "CV Tài chính tự do",
     text: "Tận dụng kinh nghiệm sẵn có để có nguồn thu nhập linh hoạt hoặc kiếm thêm thu nhập",
   },
   {
