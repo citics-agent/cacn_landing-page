@@ -46,8 +46,8 @@ v2.1/
 
 ## Adding a New Policy/Campaign Banner
 
-1. Add an entry in `src/lib/policies.ts`
-2. Create folder `public/assets/policies/{id}/`
+1. Add an entry in `v2.1/src/lib/policies.ts`
+2. Create folder `v2.1/public/assets/policies/{id}/`
 3. Drop `desktop.{png|jpg}` + `mobile.{png|jpg}` into the folder
 4. Run `npm run convert:policies` (or just `npm run build` -- it runs automatically)
 
