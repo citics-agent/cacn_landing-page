@@ -48,6 +48,7 @@ const arcRings = [140, 200, 260, 300, 360, 420];
 export default function Personas() {
   const [active, setActive] = useState<number>(0);
   const autoRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isUserInteracting = useRef(false);
 
   const startAuto = useCallback(() => {
@@ -60,7 +61,10 @@ export default function Personas() {
 
   useEffect(() => {
     startAuto();
-    return () => { if (autoRef.current) clearInterval(autoRef.current); };
+    return () => {
+      if (autoRef.current) clearInterval(autoRef.current);
+      if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    };
   }, [startAuto]);
 
   function handleSelect(i: number) {
@@ -71,7 +75,8 @@ export default function Personas() {
 
   function handleLeave() {
     isUserInteracting.current = false;
-    setTimeout(() => {
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    leaveTimer.current = setTimeout(() => {
       if (!isUserInteracting.current) startAuto();
     }, 6000);
   }

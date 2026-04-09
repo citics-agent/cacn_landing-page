@@ -155,12 +155,15 @@ export default function Roles() {
   const [activeKey, setActiveKey] = useState<CoopKey>("listing");
   const [isFading, setIsFading] = useState(false);
   const autoRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const fadeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const switchCoop = useCallback(
     (key: CoopKey) => {
       if (key === activeKey) return;
       setIsFading(true);
-      setTimeout(() => {
+      if (fadeTimer.current) clearTimeout(fadeTimer.current);
+      fadeTimer.current = setTimeout(() => {
         setActiveKey(key);
         setIsFading(false);
       }, 200);
@@ -179,7 +182,11 @@ export default function Roles() {
 
   useEffect(() => {
     startAuto();
-    return () => { if (autoRef.current) clearInterval(autoRef.current); };
+    return () => {
+      if (autoRef.current) clearInterval(autoRef.current);
+      if (fadeTimer.current) clearTimeout(fadeTimer.current);
+      if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    };
   }, [startAuto]);
 
   function handleNodeHover(key: CoopKey) {
@@ -188,7 +195,8 @@ export default function Roles() {
   }
 
   function handleCircleLeave() {
-    setTimeout(() => startAuto(), 8000);
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    leaveTimer.current = setTimeout(() => startAuto(), 8000);
   }
 
   const coop = coopData[activeKey];
