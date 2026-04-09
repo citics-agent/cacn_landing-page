@@ -16,11 +16,11 @@ const personas = [
     text: 'Muốn bán nhanh nguồn hàng sẵn có, mở rộng mạng lưới mà không bị "kẹt deal"',
   },
   {
-    title: "Chuyên viên tín dụng",
+    title: "Chuyên viên tài chính",
     text: "Tìm kiếm cơ hội giúp khách giải ngân cho hồ sơ của khách hàng",
   },
   {
-    title: "CV tín dụng đã nghỉ việc",
+    title: "CV tài chính đã nghỉ việc",
     text: "Tận dụng kinh nghiệm sẵn có để có nguồn thu nhập linh hoạt hoặc kiếm thêm thu nhập",
   },
   {

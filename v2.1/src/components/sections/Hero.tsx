@@ -27,6 +27,11 @@ const benefits = [
     footnote: "Khi listing được xác thực trên hệ thống",
     icon: <svg {...iconProps}><rect x="5" y="3" width="14" height="18" rx="2" {...strokeProps}/><path d="M9 9h6M9 13h4" {...strokeProps}/></svg>,
   },
+  {
+    text: <><span className="text-amber font-semibold">Ưu đãi học phí</span> dành cho khoá chứng nhận hành nghề môi giới bất động sản</>,
+    footnote: "Theo tiêu chuẩn của sở xây dựng",
+    icon: <svg {...iconProps}><path d="M22 10v6M2 10l10-7 10 7-10 7z" {...strokeProps}/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" {...strokeProps}/></svg>,
+  },
 ];
 
 export default function Hero() {
