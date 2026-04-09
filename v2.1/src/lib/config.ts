@@ -5,5 +5,5 @@ export const CONTACT = {
   email: "cacn@citics.com.vn",
   dkkd: "0315391639",
   address:
-    "Căn LV1-00.16, Tầng trệt, Thủ Thiêm Lake View 1 - Số 19 Đường Ven Hồ Trung Tâm, Phường An Khánh, TP. Hồ Chí Minh",
+    "Căn VE-S01 và VE-S02, Khu Thương Mại Tòa nhà VENICE, Khu Dân Cư New City tại 17 Mai Chí Thọ, Phường An Khánh, Thành phố Hồ Chí Minh",
 } as const;
