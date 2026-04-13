@@ -58,13 +58,15 @@ export default function EformMain() {
       return;
     }
 
-    try {
-      const res = await fetch(SCRIPT_URL, {
+     try {
+      await fetch(SCRIPT_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      // Với no-cors, response là opaque nên res.ok luôn false dù thành công
+      // Nếu không có lỗi network bị catch, ta mặc định là gửi thành công
       setStatus("success");
       setCityValue("");
       setOccupationValue("");
