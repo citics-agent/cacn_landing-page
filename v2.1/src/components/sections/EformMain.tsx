@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6k_wIx0FCo6YJbsj3fh4659kGq4vNf0svxhHhQWfZetfSPKsxpMzBHBRaZosETK0M/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw2tsftWg4QAvc8lZxzOwXowqUlqpvx__ZXK7Qs4t0BDSbJOrBt07tw20vLlw1m4S-c/exec";
 
 const agentRoles = [
   "Agent Buyer (Thứ cấp)",
@@ -42,7 +42,7 @@ export default function EformMain() {
     setErrors({});
     setStatus("loading");
 
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6k_wIx0FCo6YJbsj3fh4659kGq4vNf0svxhHhQWfZetfSPKsxpMzBHBRaZosETK0M/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw2tsftWg4QAvc8lZxzOwXowqUlqpvx__ZXK7Qs4t0BDSbJOrBt07tw20vLlw1m4S-c/exec";
 
     const payload = {
       type: "agent",
