@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 
-const SCRIPT_URL = process.env.NEXT_PUBLIC_GSHEET_URL ?? "";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6k_wIx0FCo6YJbsj3fh4659kGq4vNf0svxhHhQWfZetfSPKsxpMzBHBRaZosETK0M/exec";
 
 const agentRoles = [
   "Agent Buyer (Thứ cấp)",
@@ -42,7 +42,10 @@ export default function EformMain() {
     setErrors({});
     setStatus("loading");
 
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6k_wIx0FCo6YJbsj3fh4659kGq4vNf0svxhHhQWfZetfSPKsxpMzBHBRaZosETK0M/exec";
+
     const payload = {
+      type: "agent",
       name: fd.get("name"),
       phone: phone.replace(/\s/g, ""),
       city: fd.get("city") === "Khác" ? fd.get("cityOther")?.toString().trim() : fd.get("city"),
@@ -53,12 +56,7 @@ export default function EformMain() {
       courseInterest: fd.get("courseInterest") === "on",
     };
 
-    if (!SCRIPT_URL) {
-      setStatus("error");
-      return;
-    }
-
-     try {
+    try {
       await fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
