@@ -2,8 +2,6 @@
 
 import { useState, FormEvent } from "react";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw2tsftWg4QAvc8lZxzOwXowqUlqpvx__ZXK7Qs4t0BDSbJOrBt07tw20vLlw1m4S-c/exec";
-
 const agentRoles = [
   "Agent Buyer (Thứ cấp)",
   "Agent Buyer (Sơ cấp)",
