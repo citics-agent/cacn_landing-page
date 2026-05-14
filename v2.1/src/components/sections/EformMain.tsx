@@ -64,6 +64,10 @@ export default function EformMain() {
       // Với no-cors, response là opaque nên res.ok luôn false dù thành công
       // Nếu không có lỗi network bị catch, ta mặc định là gửi thành công
       setStatus("success");
+      const ttq = (window as unknown as { ttq?: { track: (event: string, params?: Record<string, unknown>) => void } }).ttq;
+      if (ttq) {
+        ttq.track("SubmitForm", { content_type: "agent_registration" });
+      }
       setCityValue("");
       setOccupationValue("");
       form.reset();
