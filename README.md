@@ -91,6 +91,17 @@ v2.1/
 
 Sau vài phút site không đổi: xem tab Actions của repo, rồi nhờ AI (Claude Code, ChatGPT...) kiểm tra: đưa link repo và mô tả lỗi, AI đọc được workflow, log deploy và code. Chỉ báo Tech nếu AI xác định lỗi nằm ở phía Vercel hoặc domain.
 
+## Nhờ AI hỗ trợ
+
+Mở thư mục repo này trong Claude Code, Codex hoặc Cursor, AI sẽ tự đọc README này làm bối cảnh. Mở đầu yêu cầu bằng trang, branch, domain, ví dụ:
+
+> Repo này là landing page Join Agent (branch v2.1, domain join-agent.citics.vn). Đọc README.md. Hãy đổi [nội dung] ở [mục trên trang]. Chỉ sửa file cần thiết và cho tôi xem `git diff` trước khi commit.
+
+Site không đổi sau khi push: bảo AI dùng `gh` CLI xem các lần chạy Actions và webhook deliveries gần nhất, chỉ báo cáo, chưa sửa.
+Trang dùng Next.js 16, bảo AI đọc `v2.1/AGENTS.md` và `node_modules/next/dist/docs/` trước khi viết code.
+
+Lưu ý: không dán token, mật khẩu, link Google Sheet lead hay dữ liệu khách vào AI chạy trên web. Luôn xem `git diff` trước khi commit, không để AI `git push --force` hay commit file `.env`.
+
 ## Lưu ý an toàn
 
 - Repo đang public: không commit token, key, mật khẩu, không commit `.env.local`.
