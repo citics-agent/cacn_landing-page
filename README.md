@@ -89,7 +89,7 @@ v2.1/
 2. Commit và push lên branch `v2.1`.
 3. CI/CD tự build và cập nhật site (`.github/workflows/deploy.yml` build lên GitHub Pages, base path `/cacn_landing-page`; site live join-agent.citics.vn chạy trên Vercel của Tech). Chờ vài phút rồi Ctrl+F5.
 
-Sau vài phút site không đổi: xem tab Actions của repo, rồi báo Tech hoặc Jayden.
+Sau vài phút site không đổi: xem tab Actions của repo, rồi nhờ AI (Claude Code, ChatGPT...) kiểm tra: đưa link repo và mô tả lỗi, AI đọc được workflow, log deploy và code. Chỉ báo Tech nếu AI xác định lỗi nằm ở phía Vercel hoặc domain.
 
 ## Lưu ý an toàn
 
