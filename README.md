@@ -50,7 +50,7 @@ Mọi nội dung nằm trong `docs/index.html`. Tìm theo `id` của mục (Ctrl
 
 ## Đưa lên live
 
-Sửa trong `docs/`, commit và push lên `main`. CI/CD tự cập nhật site, chờ vài phút rồi Ctrl+F5. Site không đổi: xem tab Actions của repo, rồi báo Tech hoặc Jayden.
+Sửa trong `docs/`, commit và push lên `main`. CI/CD tự cập nhật site, chờ vài phút rồi Ctrl+F5. Site không đổi: xem tab Actions của repo, rồi nhờ AI (Claude Code, ChatGPT...) kiểm tra: đưa link repo và mô tả lỗi. Chỉ báo Tech nếu AI xác định lỗi nằm ở phía Vercel hoặc domain.
 
 ## Form đăng ký
 
