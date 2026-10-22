@@ -16,21 +16,24 @@ git clone https://github.com/citics-agent/cacn_landing-page.git
 cd cacn_landing-page
 git checkout v2.1
 cd v2.1
-cp .env.example .env.local
 npm install
 npm run dev
 ```
 
 Mở http://localhost:3000/cacn_landing-page.
 
-Biến môi trường trong `.env.local`:
+## Biến môi trường
 
-| Biến | Ý nghĩa |
-|---|---|
-| `NEXT_PUBLIC_GSHEET_URL` | URL web app Google Apps Script nhận form đăng ký |
-| `NEXT_PUBLIC_BASE_PATH` | Base path của trang, mặc định `/cacn_landing-page` |
+**Không cần file `.env` để chạy hoặc build.** Repo không có bí mật nào trong biến môi trường.
 
-Lấy `NEXT_PUBLIC_GSHEET_URL` tại: mở Google Sheet nhận lead của Join Agent → Extensions → Apps Script → Deploy → Manage deployments → copy Web app URL (xin quyền Sheet từ Jayden). Không điền token/key vào các biến `NEXT_PUBLIC_*` vì chúng lộ ra trình duyệt.
+| Biến | Dùng ở đâu | Ghi chú |
+|---|---|---|
+| `NEXT_PUBLIC_BASE_PATH` | `src/lib/config.ts` | Mặc định `/cacn_landing-page`, không cần đặt |
+| `NEXT_PUBLIC_GSHEET_URL` | Không có chỗ nào dùng | Có trong `.env.example` nhưng code không đọc. Bỏ qua |
+
+URL form đăng ký (Google Apps Script) **nằm cứng trong code** tại `src/components/sections/EformMain.tsx` (biến `SCRIPT_URL`). Đổi URL thì sửa file này, không phải `.env`.
+
+Mọi biến `NEXT_PUBLIC_*` đều lộ ra trình duyệt, đừng đặt token hay key vào đó.
 
 ## Lệnh
 
