@@ -58,6 +58,16 @@ Sửa trong `docs/`, commit và push lên `main`. CI/CD tự cập nhật site, 
 
 Đổi người nhận email hoặc Sheet: sửa `CONFIG` trong Apps Script, Deploy → **New deployment** (Web app, Execute as: Me, Anyone), rồi cập nhật `GOOGLE_SCRIPT_URL` trong `docs/main.js` nếu URL đổi.
 
+## Nhờ AI hỗ trợ
+
+Mở thư mục repo này trong Claude Code, Codex hoặc Cursor, AI sẽ tự đọc README này làm bối cảnh. Mở đầu yêu cầu bằng trang, branch, domain, ví dụ:
+
+> Repo này là landing page Agent Network (branch main, domain agentnetwork.citics.vn, code trong docs/). Đọc README.md. Hãy đổi [nội dung] ở [mục trên trang]. Chỉ sửa file cần thiết và cho tôi xem `git diff` trước khi commit.
+
+Site không đổi sau khi push: bảo AI dùng `gh` CLI xem các lần chạy Actions gần nhất, chỉ báo cáo, chưa sửa.
+
+Lưu ý: không dán token, mật khẩu, link Google Sheet lead hay dữ liệu khách vào AI chạy trên web. Luôn xem `git diff` trước khi commit, không để AI `git push --force` hay commit file `.env`.
+
 ## Lưu ý an toàn
 
 - Repo đang public: không commit token, key, mật khẩu.
