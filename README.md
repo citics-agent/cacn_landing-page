@@ -57,6 +57,20 @@ v2.1/
 └── scripts/convert-policies.mjs   Đổi ảnh sang WebP
 ```
 
+## Sửa nội dung từng mục
+
+| Mục trên trang | File | Cách sửa |
+|---|---|---|
+| Chính sách (4 banner: hoa hồng, thưởng giới thiệu, thưởng nóng niêm yết, thưởng vay thế chấp) | `v2.1/src/lib/policies.ts` và `v2.1/public/assets/policies/{id}/` | Đổi banner: thay `desktop.jpg` và `mobile.jpg` trong thư mục của chính sách đó. Thêm chính sách: xem mục "Thêm banner chính sách mới" |
+| Hình ảnh hoạt động | `v2.1/src/components/sections/Events.tsx` | Sửa mảng `eventImages` (`file`, `alt`). Ảnh để trong `v2.1/public/assets/events/` |
+| Tin tức ("Citics có gì mới?") | `v2.1/src/lib/news.ts` | Thêm tin mới vào **đầu** mảng: `title`, `img` (link ảnh hoặc ảnh local), `url`. File có hướng dẫn chi tiết ở đầu |
+| Câu hỏi thường gặp | `v2.1/src/components/sections/Faq.tsx` | Sửa mảng `faqItems` (`q`, `a`) |
+| Hotline, email, địa chỉ, ĐKKD | `v2.1/src/lib/config.ts` | Sửa object `CONTACT`, đổi một chỗ là đổi toàn trang |
+| Số liệu thành tích (con số đếm) | `v2.1/src/components/sections/Achievements.tsx` | Sửa số trong `useCountUp(...)` |
+| Form đăng ký, nơi nhận lead | `v2.1/src/components/sections/EformMain.tsx` | `SCRIPT_URL` trỏ tới Apps Script ghi vào Google Sheet |
+
+Ảnh sự kiện và tin tức nên dưới 500 KB, rộng từ 700 px. Ảnh chính sách chỉ cần PNG/JPG, build tự đổi sang WebP.
+
 ## Việc MKT hay làm
 
 **Thêm banner chính sách mới**
